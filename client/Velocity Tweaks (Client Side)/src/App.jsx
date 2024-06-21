@@ -1,4 +1,6 @@
 import { useState } from "react"
+import './index.css'
+import { FAQ } from "./pages/FAQ"
 
 function App() {
 
@@ -6,9 +8,7 @@ function App() {
 
   return (
     <>
-
-
-
+      
     </>
   )
 }
