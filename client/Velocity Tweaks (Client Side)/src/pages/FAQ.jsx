@@ -4,7 +4,7 @@ import '../index.css'
 
 export function FAQ() {
   return <React.Fragment>
-    <div className="underline" >
+    <div className="text-white" >
         FAQ
     </div>
 
