@@ -1,3 +1,24 @@
 body{
     background-color: #000000;
 }
+
+.slider-container .slick-dots li button:before {
+    color: white;
+}
+
+.slick-dots li.slick-active button:before
+{
+    opacity: .75;
+    color: white;
+}
+
+.slick-slide > div {
+    margin-left: 10px; 
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+.css-1c99szj-MuiRating-icon{
+    color: gray;
+    opacity: 30%;
+}
