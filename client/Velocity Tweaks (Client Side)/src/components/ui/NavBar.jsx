@@ -3,6 +3,8 @@ import { buttonState } from "../../services/state/store";
 import { useRecoilState } from "recoil";
 import { SideBar } from "./SideBar";
 import { Link } from "react-router-dom";
+import { IoCart } from "react-icons/io5";
+import { IoPerson } from "react-icons/io5";
 
 export default function NavBar() {
   const [button, setButton] = useRecoilState(buttonState);
@@ -14,7 +16,7 @@ export default function NavBar() {
 
   return (
     <React.Fragment>
-      <div className="flex h-24 items-center px-4 max-w-[1536px] mx-auto">
+      <div className="flex h-24 items-center px-4 container mx-auto">
         <Link to="/">
           <h1 className=" font-Inter font-black text-white text-xl cursor-pointer">
             Velocity Tweaks
@@ -22,7 +24,7 @@ export default function NavBar() {
         </Link>
 
         <div className="flex-grow flex justify-center ">
-          <ul className="flex text-white space-x-10 ">
+          <ul className="flex text-white space-x-10  ">
             <Link to="faq">
               <li className=" hidden md:block  hover:text-gray-200 font-Inter  cursor-pointer">
                 FAQ
@@ -41,20 +43,29 @@ export default function NavBar() {
           </ul>
         </div>
 
-        <div className="flex items-center space-x-4">
-          <ul className="flex text-white space-x-4">
-            <Link to="login">
-              {" "}
-              <li className="cursor-pointer w-18 md:w-20  hidden md:block  font-Inter hover:text-gray-200">
-                Log In
-              </li>
-            </Link>
-          </ul>
+        <div className="flex items-center gap-3   ">
+          <div>
+            <ul className="text-white hidden md:block">
+              <Link to="login">
+                {" "}
+                <IoPerson size={23} className="hover:text-slate-300" />
+              </Link>
+            </ul>
+          </div>
 
-          <Link to="signup">
-            <button className="bg-gradient-to-r h-12 w-24 from-[#E32723] via-[#8F74A6] to-[#07A4FF] text-white rounded-full p-1">
+          <div>
+            <ul className="text-white hidden md:block">
+              <Link to="cart">
+                {" "}
+                <IoCart size={28} className="hover:text-slate-300 mr-1" />
+              </Link>
+            </ul>
+          </div>
+
+          <Link to="store">
+            <button className="bg-gradient-to-r h-12 w-28 from-[#E32723] via-[#8F74A6] to-[#07A4FF] text-white rounded-full p-1">
               <span className="flex justify-center  font-Inter items-center transition-all ease-in duration-75 h-10 w-18 bg-gray-900 hover:bg-[#212121] text-white rounded-full">
-                Sign Up
+                Buy Now
               </span>
             </button>
           </Link>
@@ -67,7 +78,7 @@ export default function NavBar() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="white"
-                className="cursor-pointer ml-4 mt-3  size-10"
+                className="cursor-pointer size-10"
               >
                 <path
                   strokeLinecap="round"
@@ -82,7 +93,7 @@ export default function NavBar() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="white"
-                className="ml-4 size-10 cursor-pointer"
+                className=" size-10 cursor-pointer"
               >
                 <path
                   strokeLinecap="round"

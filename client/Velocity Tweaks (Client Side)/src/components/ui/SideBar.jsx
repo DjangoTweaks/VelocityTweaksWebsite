@@ -36,12 +36,20 @@ export function SideBar() {
             Contact
           </li>
         </Link>
+        <Link to="cart">
+          {" "}
+          <li className="p-4 font-Inter border-b border-gray-600 text-white hover:text-gray-300 cursor-pointer">
+            Cart
+          </li>
+        </Link>
+
         <Link to="login">
           {" "}
           <li className="p-4 font-Inter  text-white hover:text-gray-300 cursor-pointer">
             Login
           </li>
         </Link>
+        
       </ul>
     </div>
   );

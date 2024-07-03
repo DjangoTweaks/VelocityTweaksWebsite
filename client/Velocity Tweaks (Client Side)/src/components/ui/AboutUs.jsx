@@ -3,7 +3,7 @@ import React from "react";
 export default function AboutUs() {
   return (
     <div
-      className="bg-gradient-to-b from-[#000000] from-20% to-[#0a0303] top-80% pt-36"
+      className="bg-gradient-to-b from-[#000000] from-20% to-[#0a0303] top-80%"
       id="parent-div"
     >
       <div className="" id="123">
@@ -14,8 +14,8 @@ export default function AboutUs() {
           </h1>
         </div>
 
-        <div className="flex justify-center pt-16 pb-36 text-white  w-full">
-          <p className="w-1/3 text-center tracking-wider font-light text-xl leading-9 font-Roboto">
+        <div className="flex justify-center pt-16 pb-36 text-white w-full">
+          <p className="w-full md:w-1/3 text-center tracking-wider font-light text-xl leading-9 font-Roboto">
             Our journey began with a passion for unlocking the ultimate
             performance in gaming and computing. Through continuous
             experimentation and variations, we discovered the secrets to

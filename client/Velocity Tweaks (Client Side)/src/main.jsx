@@ -13,6 +13,7 @@ import { Store } from "./pages/Store";
 import { Contact } from "./pages/Contact";
 import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
+import Cart from "./pages/Cart";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: "signup",
     element: <Signup/>,
+  },
+  {
+    path:"cart",
+    element: <Cart/>,
   }
 ]);
 
