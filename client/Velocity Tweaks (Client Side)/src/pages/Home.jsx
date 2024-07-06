@@ -18,7 +18,8 @@ export function Home() {
   return (
     <div>
       <RecoilRoot>
-        <NavBar></NavBar>
+        <div className="scroll-smooth" >   
+           <NavBar></NavBar>
         <Hero></Hero>
         <AboutUs></AboutUs>
         <Review></Review>
@@ -26,9 +27,11 @@ export function Home() {
         <ContactUs ></ContactUs>
         </div>
         
-        <div className="mt-12" >
+        <div  >
         <Footer></Footer>
         </div>
+        </div>
+       
         
       </RecoilRoot>
     </div>

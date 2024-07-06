@@ -16,9 +16,11 @@ export default function NavBar() {
 
   return (
     <React.Fragment>
+
+      <div className="bg-transparent backdrop-blur-xl sticky top-0 z-50" >
       <div className="flex h-24 items-center px-4 container mx-auto">
         <Link to="/">
-          <h1 className=" font-Inter font-black text-white text-xl cursor-pointer">
+          <h1 className="font-Inter font-black text-white text-xl cursor-pointer">
             Velocity Tweaks
           </h1>
         </Link>
@@ -43,7 +45,7 @@ export default function NavBar() {
           </ul>
         </div>
 
-        <div className="flex items-center gap-3   ">
+        <div className="flex items-center gap-3">
           <div>
             <ul className="text-white hidden md:block">
               <Link to="login">
@@ -103,10 +105,13 @@ export default function NavBar() {
               </svg>
             )}
 
-            <SideBar></SideBar>
+            <SideBar  ></SideBar>
           </div>
         </div>
       </div>
+        
+      </div>
+  
     </React.Fragment>
   );
 }
