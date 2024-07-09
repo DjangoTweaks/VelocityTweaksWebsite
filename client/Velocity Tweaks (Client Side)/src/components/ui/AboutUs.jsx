@@ -1,17 +1,17 @@
 import React from "react";
+import FadeInUpwardsText from "./FadeInUpwardsText";
 
 export default function AboutUs() {
   return (
     <div
       className="bg-gradient-to-b from-[#000000] from-20% to-[#0a0303] top-80%"
-      id="parent-div"
+      id="aboutus"
     >
-      <div className="" id="123">
+      <div className="" >
         <div className="pt-36">
           <div className="w-12 h-[2px]  bg-gray-400 mx-auto mb-8"></div>
-          <h1 className="flex justify-center pt-12 text-white font-Inter text-7xl font-semibold">
-            About Us
-          </h1>
+          <FadeInUpwardsText text="About Us" fadeClass="flex justify-center pt-12 text-white font-Inter text-7xl font-semibold">
+          </FadeInUpwardsText>
         </div>
 
         <div className="flex justify-center pt-16 pb-36 text-white w-full">

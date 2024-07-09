@@ -1,11 +1,12 @@
 import React from "react";
+import FadeInUpwardsText from "./FadeInUpwardsText";
 
 export default function ContactUs() {
   return (
     <div className="text-white font-Roboto font-thin h-[850px] ">
-      <div className="container mx-auto flex justify-center font-Inter  font-semibold text-6xl md:text-8xl">
-        Contact Us
-      </div>
+      <FadeInUpwardsText text="Contact Us" fadeClass="container mx-auto flex justify-center font-Inter  font-semibold text-6xl md:text-8xl">
+        
+      </FadeInUpwardsText>
 
       <div className="container ml-3 md:mx-auto flex justify-around mt-12">
         <div className="w-4/5 md:w-3/5">

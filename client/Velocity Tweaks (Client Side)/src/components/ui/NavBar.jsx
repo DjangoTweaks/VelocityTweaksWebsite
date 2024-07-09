@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { buttonState } from "../../services/state/store";
 import { useRecoilState } from "recoil";
 import { SideBar } from "./SideBar";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { IoCart } from "react-icons/io5";
 import { IoPerson } from "react-icons/io5";
 
@@ -19,58 +19,58 @@ export default function NavBar() {
 
       <div className="bg-transparent backdrop-blur-xl sticky top-0 z-50" >
       <div className="flex h-24 items-center px-4 container mx-auto">
-        <Link to="/">
+        <NavLink to="/">
           <h1 className="font-Inter font-black text-white text-xl cursor-pointer">
             Velocity Tweaks
           </h1>
-        </Link>
+        </NavLink>
 
         <div className="flex-grow flex justify-center ">
           <ul className="flex text-white space-x-10  ">
-            <Link to="faq">
+            <NavLink to="/faq">
               <li className=" hidden md:block  hover:text-gray-200 font-Inter  cursor-pointer">
                 FAQ
               </li>
-            </Link>
-            <Link to="store">
+            </NavLink>
+            <NavLink to="/store">
               <li className="hidden md:block hover:text-gray-200 font-Inter cursor-pointer">
                 Store
               </li>
-            </Link>
-            <Link to="contact">
+            </NavLink>
+            <NavLink to="/contact">
               <li className="hidden md:block hover:text-gray-200 font-Inter cursor-pointer">
                 Contact
               </li>
-            </Link>
+            </NavLink>
           </ul>
         </div>
 
         <div className="flex items-center gap-3">
           <div>
             <ul className="text-white hidden md:block">
-              <Link to="login">
+              <NavLink to="/login">
                 {" "}
                 <IoPerson size={23} className="hover:text-slate-300" />
-              </Link>
+              </NavLink>
             </ul>
           </div>
 
           <div>
             <ul className="text-white hidden md:block">
-              <Link to="cart">
+              <NavLink to="/cart">
                 {" "}
                 <IoCart size={28} className="hover:text-slate-300 mr-1" />
-              </Link>
+              </NavLink>
             </ul>
           </div>
 
-          <Link to="store">
+          <NavLink to="/store">
             <button className="bg-gradient-to-r h-12 w-28 from-[#E32723] via-[#8F74A6] to-[#07A4FF] text-white rounded-full p-1">
               <span className="flex justify-center  font-Inter items-center transition-all ease-in duration-75 h-10 w-18 bg-gray-900 hover:bg-[#212121] text-white rounded-full">
                 Buy Now
               </span>
             </button>
-          </Link>
+          </NavLink>
 
           <div onClick={boolValChanger} className="block md:hidden">
             {button ? (

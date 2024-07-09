@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <div className="bg-zinc-950  bg-opacity-60 backdrop-blur-md backdrop-brightness-150 border-t-[0.5px] py-12 border-gray-600 w-full ">
+    <div className="bg-zinc-950  bg-opacity-60 backdrop-blur-md backdrop-brightness-150 border-t-[0.5px] py-12 border-gray-600 bottom-0 w-full ">
       <div>
         <div className="text-white container mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-6 gap-4 ">

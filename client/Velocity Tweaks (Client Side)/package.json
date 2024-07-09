@@ -16,6 +16,7 @@
     "@mui/styled-engine-sc": "^6.0.0-alpha.18",
     "bootstrap": "^5.3.3",
     "flowbite-react": "^0.10.1",
+    "framer-motion": "^11.2.13",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.3",
     "react-dom": "^18.2.0",
