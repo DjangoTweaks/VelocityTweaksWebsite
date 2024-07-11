@@ -7,7 +7,7 @@ export default function ReviewCard(reviwProps) {
       className="block p-6  max-w-lg h-auto bg-[#060606] 
         rounded-3xl border border-gray-200 p-12 "
     >
-      <h1 className="my-6 text-3xl whitespace-nowrap font-Inter text-white text-center font-semibold ">
+      <h1 className="my-6 text-3xl  font-Inter text-white text-center font-semibold ">
         {reviwProps.username}
       </h1>
 

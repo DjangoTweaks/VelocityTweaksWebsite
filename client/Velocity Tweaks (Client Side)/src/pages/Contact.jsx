@@ -1,7 +1,7 @@
 import React from "react";
 import '../index.css'
-import ControlledCarousel from "../components/ReviewCarousel";
-import ReviewCard from "../components/ReviewCard";
+import ControlledCarousel from "../components/ui/ReviewCarousel";
+import ReviewCard from "../components/ui/ReviewCard";
 export function Contact() {
   return <React.Fragment>
       <div className="mx-auto px-10" >

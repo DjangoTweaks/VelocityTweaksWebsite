@@ -15,7 +15,7 @@ export default function ControlledCarousel() {
     infinite: true,
     className: "center",
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 30000,
     speed: 2000,
     cssEase: "linear",
     pauseOnHover: true,

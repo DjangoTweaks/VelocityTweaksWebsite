@@ -1,10 +1,20 @@
 body{
     background-color: #000000;
+
+    /* @apply bg-gradient-to-b from-[#000000] from-10% via-[#1a0404] via-40%  to-[#021e34] to-70% bg-blend-screen	 */
+
 }
+
+
 
 .slider-container .slick-dots li button:before {
     color: white;
 }
+
+.slick-dots li.slick-active button:before{
+    color: gray;
+}
+
 
 .slick-dots li.slick-active button:before
 {
@@ -21,4 +31,24 @@ body{
 .css-1c99szj-MuiRating-icon{
     color: gray;
     opacity: 30%;
+}
+
+::-webkit-scrollbar {
+    /* Customize the scrollbar width */
+
+    @apply bg-[#1A1A1A] w-3
+
+ 
+}
+
+::-webkit-scrollbar-track {
+    /* Customize the scrollbar track */
+    /* @apply bg-white */
+}
+
+::-webkit-scrollbar-thumb {
+    /* Customize the scrollbar thumb */
+    @apply bg-slate-400 rounded-full
+
+
 }

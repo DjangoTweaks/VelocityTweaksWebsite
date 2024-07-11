@@ -6,7 +6,7 @@ export function SideBar() {
   const [button, setButton] = useRecoilState(buttonState);
 
   return (
-    <div>
+    <div >
       <ul
         className={
           button
@@ -14,7 +14,8 @@ export function SideBar() {
             : "fixed left-0 top-0 w-[50%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500"
         }
       >
-        <h1 className="font-Inter w-full font-black text-white text-xl cursor-pointer p-4 pt-9 pb-10">
+        <div className="bg-black h-screen" >
+        <h1 className="  font-Inter w-full font-black text-white text-xl cursor-pointer p-4 pt-9 pb-10">
           Velocity Tweaks
         </h1>
 
@@ -36,12 +37,22 @@ export function SideBar() {
             Contact
           </li>
         </Link>
+        <Link to="cart">
+          {" "}
+          <li className="p-4 font-Inter border-b border-gray-600 text-white hover:text-gray-300 cursor-pointer">
+            Cart
+          </li>
+        </Link>
+
         <Link to="login">
           {" "}
           <li className="p-4 font-Inter  text-white hover:text-gray-300 cursor-pointer">
             Login
           </li>
         </Link>
+        </div>
+      
+        
       </ul>
     </div>
   );
