@@ -19,32 +19,32 @@ export function SideBar() {
           Velocity Tweaks
         </h1>
 
-        <Link to="faq">
+        <Link to="/faq">
           {" "}
           <li className="p-4 border-b  font-Inter text-white border-gray-600 hover:text-gray-300 cursor-pointer ">
             FAQ
           </li>
         </Link>
-        <Link to="store">
+        <Link to="/store">
           {" "}
           <li className="p-4 border-b font-Inter text-white border-gray-600 hover:text-gray-300 cursor-pointer">
             Store
           </li>
         </Link>
-        <Link to="contact">
+        <Link to="/contact">
           {" "}
           <li className="p-4 font-Inter border-b border-gray-600 text-white hover:text-gray-300 cursor-pointer">
             Contact
           </li>
         </Link>
-        <Link to="cart">
+        <Link to="/cart">
           {" "}
           <li className="p-4 font-Inter border-b border-gray-600 text-white hover:text-gray-300 cursor-pointer">
             Cart
           </li>
         </Link>
 
-        <Link to="login">
+        <Link to="/login">
           {" "}
           <li className="p-4 font-Inter  text-white hover:text-gray-300 cursor-pointer">
             Login

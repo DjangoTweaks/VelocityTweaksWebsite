@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "./components/ui/NavBar";
+import NavBar from "../../Velocity Tweaks (Client Side)/src/components/ui/NavBar/NavBar.jsx";
 import Footer from "./components/ui/Footer";
 import Home from "./pages/Home"
 import { RecoilRoot } from "recoil";
