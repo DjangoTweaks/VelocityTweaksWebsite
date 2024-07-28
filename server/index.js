@@ -17,6 +17,6 @@ app.use('/api/queries', queryRoutes);
 app.use('/api/review', reviewRoutes);
 
 const{connectMongoDB}= require('./connect')
-connectMongoDB('mongodb://127.0.0.1:27017/d1')
+connectMongoDB('mongodb+srv://Aaditya:admin@cluster0.kxn151h.mongodb.net/D1')
 
 app.listen(3000)
