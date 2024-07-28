@@ -1,0 +1,56 @@
+import React from "react";
+import { cartState } from "../../../services/state/store";
+import { useRecoilValue } from "recoil";
+import { CurrencyConverterUSD } from "../../../utils/CurrencyConverter";
+
+export default function CartTotal() {
+  const cart = useRecoilValue(cartState);
+
+  function SubTotal() {
+    return cart.reduce((accumulator, currentVal) => {
+      return accumulator + currentVal.count * currentVal.price;
+    }, 0);
+  }
+
+  function GrandTotal()
+  {
+    let tax = 0; 
+    return SubTotal() + tax
+  }
+
+
+
+
+//   console.log("SubTotal is: ", SubTotal());
+
+  return (
+    <div>
+      <div className="bg-[#292929] rounded-xl drop-shadow-2xl bg-opacity-50 mx-4 mt-4 p-4">
+        <div className="flex justify-between px-1">
+          <div className="font-Inter font-light text-sm text-white text-opacity-70">
+            Subtotal
+          </div>
+          <div className="font-Inter font-normal text-sm text-white text-opacity-70">
+            {CurrencyConverterUSD(SubTotal())}
+          </div>
+        </div>
+
+        <div className="flex justify-between px-1">
+          <div className="font-Inter font-light text-sm text-white text-opacity-70">
+            Discount
+          </div>
+          <div className="font-Inter font-normal text-sm text-white text-opacity-70">
+            -$0.00
+          </div>
+        </div>
+        <div className="flex justify-between px-1 py-4">
+          <div className="font-Inter font-bold text-[20px] ">Total</div>
+          <div className="font-Inter font-bold text-[20px]">{CurrencyConverterUSD(GrandTotal())}</div>
+        </div>
+        <button className="bg-white hover:ease-in-out hover:duration-75 hover:bg-slate-200 rounded-[503px] p-2 text-black font-Roboto font-bold px-2 w-full ">
+          Proceed To Checkout
+        </button>
+      </div>
+    </div>
+  );
+}

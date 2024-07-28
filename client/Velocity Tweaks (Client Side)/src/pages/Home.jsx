@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "../components/ui/NavBar";
 import "../index.css";
 import {
   RecoilRoot,
