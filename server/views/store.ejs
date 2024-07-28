@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store</title>
+  <link rel="stylesheet" href="../styles/styles.css">
+  <style>
+        /* public/styles.css */
+
+/* Reset some basic elements */
+body, h1, h2, p, ul {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* General body styling */
+  body {
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navigation bar styling */
+  nav {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  nav ul li {
+    display: inline;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+  }
+  
+  nav ul li a:hover {
+    background-color: #575757;
+    border-radius: 5px;
+  }
+  
+  .user-profile {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+  }
+  
+  .user-profile a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .user-profile a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Container styling */
+  .container {
+    width: 80%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  
+  /* Products section styling */
+  .products {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .product {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    width: 30%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .product img {
+    max-width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .product h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .product p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .product button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .product button:hover {
+    background-color: #575757;
+  }
+  
+
+
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="nav-links">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/home/store">Store</a></li>
+        <li><a href="/home/faq">FAQ</a></li>
+    </ul> 
+    <div class="user-profile">
+      <a href="/user/profile">User Profile</a>
+    </div>
+  </nav>
+  <div class="container">
+    <h1>Store</h1>
+    <div class="products">
+      <% products.forEach(product => { %>
+        <div class="product">
+          <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+          <h2><%= product.name %></h2>
+          <p><%= product.description %></p>
+          <p>$<%= product.price %></p>
+          <button onclick="checkout('<%= product._id %>')">Checkout</button>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+  <script>
+    function checkout(productId) {
+      // Logic for checkout (e.g., add to cart, redirect to payment page)
+      alert('Product ' + productId + ' checked out!');
+    }
+  </script>
+</body>
+</html>
