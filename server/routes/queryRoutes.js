@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const {submitQuery} = require("../controller/queryController")
+const {submitQuery} = require("../controllers/queryController")
 
 router.post('/', submitQuery);
 
