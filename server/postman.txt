@@ -1,0 +1,12 @@
+postman format
+
+{
+    "name":"user 3",
+    "email": "user3@gmail.com",
+    "message":"this is a query 3"
+}
+
+
+
+
+

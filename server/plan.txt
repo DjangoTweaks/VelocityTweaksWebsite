@@ -1,0 +1,38 @@
+Database Structure
+Collections:
+Users
+Admins
+Products
+Orders
+Testimonials
+Queries
+
+
+project/
+│
+├── client/               # React frontend
+├── controllers/          # Controller files
+│   ├── authController.js
+│   ├── productController.js
+│   ├── orderController.js
+│   ├── testimonialController.js
+│   └── queryController.js
+│
+├── models/               # Mongoose models
+│   ├── User.js
+│   ├── Admin.js
+│   ├── Product.js
+│   ├── Order.js
+│   ├── Testimonial.js
+│   └── Query.js
+│
+├── routes/               # Express routes
+│   ├── authRoutes.js
+│   ├── productRoutes.js
+│   ├── orderRoutes.js
+│   ├── testimonialRoutes.js
+│   └── queryRoutes.js
+│
+├── index.js              # Main server file
+└── config/               # Configuration files
+    └── db.js

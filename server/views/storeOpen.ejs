@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding-top: 60px; /* space for the fixed navbar */
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            list-style-type: none;
+            display: flex;
+            gap: 1em;
+        }
+
+        .nav-links li {
+            display: inline;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .card {
+            width: 18rem;
+            background-color: rgb(73, 79, 79);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .card img {
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul class="nav-links">
+          <li><a href="/open/home">Home</a></li>
+          <li><a href="/open/store">Store</a></li>
+          <li><a href="/open/faq">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <h1>Store</h1>
+    <div class="container">
+        <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Util 1</h5>
+                <p class="card-text">Util 1 info</p>
+                <a href="/user/login" class="btn">Go somewhere</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Util 2</h5>
+                <p class="card-text">Util 2 info</p>
+                <a href="/user/login" class="btn">Go somewhere</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Util 3</h5>
+                <p class="card-text">Util 3 info</p>
+                <a href="/user/login" class="btn">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
