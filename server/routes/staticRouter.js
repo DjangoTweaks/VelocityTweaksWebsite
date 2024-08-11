@@ -1,5 +1,6 @@
 const express = require("express")
 const {handleUserSignUP, handleUserlogin,} = require("../controllers/user")
+const {submitReview} = require("../controllers/reviewController")
 const router= express.Router()
 //const Product = require("../model/products");
 router.get("/", (req, res)=>{
@@ -19,5 +20,11 @@ router.get('/store', async (req, res) => {
 router.get("/faq", (req, res)=>{
     res.render("faq")
 })
+
+router.get("/review", (req, res)=>{
+  res.render("review", {user:req.user});
+})
+
+router.post("/submit-review", submitReview)
 
 module.exports = router;
