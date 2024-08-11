@@ -35,6 +35,7 @@ export const cartState = atom({
       count: 0,
     },
   ],
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const cartNotificationSelector = selector({
@@ -52,3 +53,35 @@ export const cartNotificationSelector = selector({
     return cartNotis;
   },
 });
+
+export const contactFormState = atom({
+  key: 'contactFormState',
+  default: []
+})
+
+
+export const reviewValueState = atom({
+  key: 'reviewValueState',
+  default: 3
+})
+
+export const disableButtonState = atom({
+  key: 'disableButtonState',
+  default: false
+});
+
+
+export const reviewValueStateNullSelector = selector({
+  key: 'reviewValueStateNullSelector',
+  get: ({get})=>{
+    let reviewState = get(reviewValueState)
+    if(reviewState === null)
+    {
+      return true 
+    }
+    else
+    {
+      return false
+    }
+  }
+})

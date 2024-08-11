@@ -48,8 +48,8 @@ export default function Footer() {
           <div className="flex justify-center font-Roboto text-sm md:text-base font-normal mt-16  ">
             Copyright © 2024 Velocity Tweaks, All Rights Reserved.
           </div>
-          <div className="flex justify-center font-Roboto text-sm md:text-base font-normal mt-16  ">
-            Developed By @DjangoTweaks and @AadityaDawkar 
+          <div className="flex justify-center font-Roboto text-sm md:text-base font-extralight -mb-10 pt-2">
+            Developed By <a target="_blank" href="https://github.com/DjangoTweaks" >&nbsp;@DjangoTweaks&nbsp;</a> and <a target="_blank" href="">&nbsp;@AadityaDawkar&nbsp; </a>  
           </div>
         </div>
         

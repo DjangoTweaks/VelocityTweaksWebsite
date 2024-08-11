@@ -27,6 +27,7 @@ import ResetPassword from "./pages/ResetPassword";
 import SomethingWentWrong from "./pages/SomethingWentWrong";
 import { ToastContainer } from "react-toastify";
 import Testing from "./pages/Testing";
+import ReviewBasic from "./pages/ReviewBasic";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,14 @@ const router = createBrowserRouter([
     path: "/cart",
     element: <Layout page={<Cart />}></Layout>,
   },
+  {
+    path: "/review/basic",
+    element: <Layout page={<ReviewBasic></ReviewBasic>}></Layout>
+  },
+  {
+    path: "/review/premium",
+    element: <Layout page={<ReviewBasic></ReviewBasic>}></Layout>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
