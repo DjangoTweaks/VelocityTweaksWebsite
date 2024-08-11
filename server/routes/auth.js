@@ -2,28 +2,43 @@ const express = require("express");
 const passport = require("passport");
 const router = express.Router();
 
+// Google Authentication for Signup
 router.get(
-  "/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
+  "/google/signup",
+  passport.authenticate("google-signup", { scope: ["profile", "email"] })
 );
 
 router.get(
-  "/google/callback",
-  passport.authenticate("google", { failureRedirect: "/user/login" }),
+  "/google/callback/signup",
+  passport.authenticate("google-signup", { failureRedirect: "/user/login", failureMessage: "User already exists. Please login."}),
   (req, res) => {
     res.redirect("/home");
   }
 );
 
-router.get("/logout", (req, res) => {
-    req.logout((err) => {
-      if (err) {
-        console.log(err);
-        return next(err);
-      }
-      res.clearCookie("uid"); // Clear the JWT cookie
-      res.redirect("/open");
-    });
+// Google Authentication for Login
+router.get(
+  "/google/login",
+  passport.authenticate("google-login", { scope: ["profile", "email"] })
+);
+
+router.get(
+  "/google/callback/login",
+  passport.authenticate("google-login", { failureRedirect: "/user/signup",  failureMessage: "Email not found, please signup." }),
+  (req, res) => {
+    res.redirect("/home");
+  }
+);
+// Logout route
+router.get("/logout", (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    res.clearCookie("uid"); // Clear the JWT cookie
+    res.redirect("/open");
   });
-  
+});
+
 module.exports = router;

@@ -4,70 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        h1 {
-            text-align: center;
-            padding-bottom: 500px;
-            color: #333;
-        }
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #555;
-        }
-        input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-    </style>
 </head>
 <body>
-    <h1>Signup</h1>
-    <form action="/user/signup" method="post">
-        <label for="name">Full Name</label>
-        <input type="text" name="name" id="name" required>
-        
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" required>
-        
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required>
-        
-        <button type="submit">Signup</button>
-    </form>
+   <h1>Signup</h1>
+
+   <form action="/user/signup" method="post">
+      <label>Name</label>
+      <input type="text" name="name" id="name">
+      <label>Email</label>
+      <input type="email" name="email" id="email">
+      <label>Password</label>
+      <input type="password" name="password" id="password">
+      <button type="submit">Signup</button>
+   </form>
+   <a href="/auth/google/signup">Signup with Google</a>
+   <div>
+       <a href="/user/login">Login</a>
+   </div>
 </body>
 </html>
