@@ -7,20 +7,15 @@
 </head>
 <body>
    <h1>Login</h1>
+  
    <form action="/user/login" method="post">
       <label>Email</label>
       <input type="text" name="email" id="">
       <label>Password</label>
       <input type="password" name="password" id="">
-      <% if (locals.error) { %>
-          <p><%= error %></p>
-      <% } %>
       <button type="submit">Login</button>
    </form>
-   <a href="/auth/google">Login with Google</a>
-
-   
+   <a href="/auth/google/login">Login with Google</a>
    <div>  <a href="/open/home">home</a></div> 
- 
 </body>
 </html>
