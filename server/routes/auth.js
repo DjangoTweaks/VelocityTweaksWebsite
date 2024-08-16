@@ -41,4 +41,17 @@ router.get("/logout", (req, res, next) => {
   });
 });
 
+
+//backend endpoint auth.
+
+router.get('/check-auth', (req, res) => {
+  if (req.isAuthenticated()) {
+    res.status(200).send({ authenticated: true });
+  } else {
+    res.status(401).send({ authenticated: false });
+  }
+});
+
+
+
 module.exports = router;
