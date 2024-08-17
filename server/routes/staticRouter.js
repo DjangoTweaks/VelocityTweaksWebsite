@@ -21,9 +21,24 @@ router.get("/faq", (req, res)=>{
     res.render("faq")
 })
 
-router.get("/review", (req, res)=>{
-  res.render("review", {user:req.user});
-})
+router.get("/review", (req, res) => {
+  if (req.user) {
+    res.json({ user: req.user });
+  } else {
+    res.status(401).json({ message: "Unauthorized" });
+  }
+});
+
+
+router.get("/user-info", (req, res) => {
+  if (req.user) {
+    res.json({ user: req.user });
+  } else {
+    res.status(401).json({ message: "Unauthorized" });
+  }
+});
+
+
 
 router.post("/submit-review", submitReview)
 
