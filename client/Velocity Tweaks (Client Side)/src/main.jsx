@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import { FAQ } from "./pages/FAQ";
 import {
   createBrowserRouter,
@@ -28,7 +28,8 @@ import SomethingWentWrong from "./pages/SomethingWentWrong";
 import { ToastContainer } from "react-toastify";
 import Testing from "./pages/Testing";
 import ReviewBasic from "./pages/ReviewBasic";
-
+import AdminLogin from "./pages/AdminLogin/AdminLogin";
+import LoginNew from "./pages/LoginNew/LoginNew"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Layout page={<Login></Login>}></Layout>,
+    element: <Layout page={<LoginNew></LoginNew>}></Layout>,
   },
   {
     path: "/register",
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
   {
     path: "/review/premium",
     element: <Layout page={<ReviewBasic></ReviewBasic>}></Layout>
+  },
+  {
+    path: "/admin/login",
+    element: <Layout page={<AdminLogin></AdminLogin>} ></Layout>
   }
 ]);
 

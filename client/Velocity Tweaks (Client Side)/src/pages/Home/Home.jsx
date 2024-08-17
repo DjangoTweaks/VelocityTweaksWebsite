@@ -1,5 +1,4 @@
 import React from "react";
-import "../index.css";
 import {
   RecoilRoot,
   atom,
@@ -7,15 +6,16 @@ import {
   useRecoilState,
   useRecoilValue,
 } from "recoil";
-import Hero from "../components/ui/Hero";
-import AboutUs from "../components/ui/AboutUs";
-import Review from "../components/ui/Review";
-import Footer from "../components/ui/Footer";
-import ContactUs from "../components/ui/ContactUs";
+import "./Home.css"
+import Hero from "../../components/ui/Hero";
+import AboutUs from "../../components/ui/AboutUs";
+import Review from "../../components/ui/Review";
+import Footer from "../../components/ui/Footer";
+import ContactUs from "../../components/ui/ContactUs";
 
 export default function Home() {
   return (
-    <div>
+    <div id="homediv" >
       <Hero></Hero>
       <AboutUs></AboutUs>
       <Review></Review>
