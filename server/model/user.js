@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema(
             unique: true,
             sparse: true,
         },
+        photo:{
+            type:String,
+
+        },
         resetPasswordToken: String,
         resetPasswordExpires: Date,
     },
