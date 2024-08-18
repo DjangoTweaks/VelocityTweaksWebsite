@@ -2,20 +2,6 @@ const express = require("express");
 const passport = require("passport");
 const router = express.Router();
 
-// Google Authentication for Signup
-router.get(
-  "/google/signup",
-  passport.authenticate("google-signup", { scope: ["profile", "email"] })
-);
-
-router.get(
-  "/google/callback/signup",
-  passport.authenticate("google-signup", { failureRedirect: "/user/login", failureMessage: "User already exists. Please login."}),
-  (req, res) => {
-    res.redirect("/home");
-  }
-);
-
 // Google Authentication for Login
 router.get(
   "/google/login",
@@ -26,9 +12,13 @@ router.get(
   "/google/callback/login",
   passport.authenticate("google-login", { failureRedirect: "/user/signup",  failureMessage: "Email not found, please signup." }),
   (req, res) => {
-    res.redirect("/home");
+    res.redirect("http://localhost:5173/home");
   }
 );
+
+
+
+
 // Logout route
 router.get("/logout", (req, res, next) => {
   req.logout((err) => {
@@ -42,8 +32,10 @@ router.get("/logout", (req, res, next) => {
 });
 
 
-//backend endpoint auth.
 
+
+
+//backend endpoint auth.
 router.get('/check-auth', (req, res) => {
   if (req.isAuthenticated()) {
     res.status(200).send({ authenticated: true });
@@ -51,6 +43,8 @@ router.get('/check-auth', (req, res) => {
     res.status(401).send({ authenticated: false });
   }
 });
+
+
 
 
 

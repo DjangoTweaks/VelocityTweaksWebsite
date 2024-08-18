@@ -30,13 +30,14 @@ router.get("/review", (req, res) => {
 });
 
 
-router.get("/user-info", (req, res) => {
+router.get("/userinfo", (req, res) => {
   if (req.user) {
     res.json({ user: req.user });
   } else {
     res.status(401).json({ message: "Unauthorized" });
   }
 });
+
 
 
 
