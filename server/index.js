@@ -7,6 +7,14 @@ const session = require("express-session");
 const {restrictToLoggedInUserOnly} = require("./middlewares/auth");
 const passport = require("./config/passport");
 
+
+// CORS Configuration
+app.use(cors({
+  origin: 'http://localhost:5173', // Frontend URL
+  credentials: true, // Allow credentials such as cookies to be sent
+}));
+
+
 const userRoute = require("./routes/user")
 const staticRouter= require("./routes/staticRouter");
 const openRouter = require("./routes/openRouter");
@@ -17,7 +25,7 @@ const reviewRoutes = require("./routes/reviewRoutes")
 
 const router= express.Router();
 
-app.use(cors());
+
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 app.use(cookieParser());
