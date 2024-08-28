@@ -1,19 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import GrayCard from "../../components/ui/GrayCard";
-import { RecoilRoot } from "recoil";
+import { RecoilRoot, useRecoilValue } from "recoil";
 import FadeInUpwardsText from "../../components/ui/FadeInUpwardsText";
 import { Checkbox } from "flowbite-react";
-import { Link } from "react-router-dom";
-import {domainName} from "../../utils/domainName";
-export default function LoginNew() {
+import { Link, useNavigate } from "react-router-dom";
+import { domainName } from "../../utils/domainName";
+import { authStateAtom } from "../../services/state/store";
 
-  function handleSignup()
-  {
-    window.location.href =  domainName + "/auth/google/login"; 
+
+export default function LoginNew() {
+  function handleSignup() {
+    window.location.href = domainName + "/auth/google/login";
   }
 
+  const userData = useRecoilValue(authStateAtom);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    function UserData() {
+      if (userData === true) {
+        navigate("/user/dashboard");
+      }
+    }
+
+    UserData();
+  }, []);
 
   return (
     <div className="bg-gradient-to-b from-[#000000] from-10% via-[#1a0404] via-40%  to-[#011422] to-70% bg-blend-screen">
@@ -36,7 +48,10 @@ export default function LoginNew() {
               </div>
 
               <div className="h-full flex flex-col items-center justify-start mt-10">
-                <button onClick={handleSignup}  className="border border-white bg-white text-black font-Inter font-bold text-[17px] rounded-3xl p-2 w-[300px]  lg:w-[400px]  hover:transition ease-in-out duration-150 hover:duration-150 hover:ease-in-out hover:bg-gray-300 ">
+                <button
+                  onClick={handleSignup}
+                  className="border border-white bg-white text-black font-Inter font-bold text-[17px] rounded-3xl p-2 w-[300px]  lg:w-[400px]  hover:transition ease-in-out duration-150 hover:duration-150 hover:ease-in-out hover:bg-gray-300 "
+                >
                   <div className="flex justify-center gap-2">
                     <img
                       src="https://docs.material-tailwind.com/icons/google.svg"

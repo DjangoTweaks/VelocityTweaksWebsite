@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
-
-
-
 export default function Footer() {
   return (
     <div className="bg-zinc-950  bg-opacity-60 backdrop-blur-md backdrop-brightness-150 border-t-[0.5px] py-12 border-gray-600 bottom-0 w-full ">
@@ -11,7 +8,7 @@ export default function Footer() {
         <div className="text-white container mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-6 gap-4 ">
             <div className="grid col-span-1  md:col-span-3">
-              <Link onClick={()=> ScrollToTop()} to="/">
+              <Link onClick={() => ScrollToTop()} to="/">
                 <h1 className="font-Inter font-black text-xl cursor-pointer">
                   Velocity Tweaks
                 </h1>
@@ -40,27 +37,26 @@ export default function Footer() {
             <div className="md:col-start-5 pl-0 md:pl-0 lg:pl-28 ">
               <h1 className="font-Roboto font-semibold text-xl">View More</h1>
               <ul className="text-gray-300 pt-6 font-Roboto font-light">
-              
-                  <NavLink onClick={()=> ScrollToTop()} to="/faq">
-                    <li className="pb-[2px] hover:text-gray-400 hover:duration-150">
-                      FAQ
-                    </li>
-                  </NavLink>
+                <NavLink onClick={() => ScrollToTop()} to="/faq">
+                  <li className="pb-[2px] hover:text-gray-400 hover:duration-150">
+                    FAQ
+                  </li>
+                </NavLink>
 
-                <NavLink onClick={()=> ScrollToTop()}  to="/store">
+                <NavLink onClick={() => ScrollToTop()} to="/store">
                   {" "}
                   <li className="pb-[2px] hover:text-gray-400 hover:duration-150">
                     Store
                   </li>
                 </NavLink>
 
-                <NavLink onClick={()=> ScrollToTop()} to="/contact">
+                <NavLink onClick={() => ScrollToTop()} to="/contact">
                   {" "}
                   <li className="pb-[2px] hover:text-gray-400 hover:duration-150">
                     Contact
                   </li>
                 </NavLink>
-                <NavLink onClick={()=> ScrollToTop()} to="/login">
+                <NavLink onClick={() => ScrollToTop()} to="/login">
                   {" "}
                   <li className="pb-[2px] hover:text-gray-400 hover:duration-150">
                     Login
@@ -72,22 +68,34 @@ export default function Footer() {
             <div className="md:col-start-6 pl-0 md:pl-0 lg:pl-28 ">
               <h1 className="font-Roboto font-semibold text-xl ">Legal</h1>
               <ul className="text-gray-300  pt-6 font-Roboto font-light">
-                <NavLink onClick={()=> ScrollToTop()} to="/legal/terms-of-service">
+                <NavLink
+                  onClick={() => ScrollToTop()}
+                  to="/legal/terms-of-service"
+                >
                   <li className="pb-[2px] hover:text-gray-400 hover:duration-150">
                     Terms Of Service
                   </li>
                 </NavLink>
-                <NavLink onClick={()=> ScrollToTop()} to="/legal/privacy-policy">
+                <NavLink
+                  onClick={() => ScrollToTop()}
+                  to="/legal/privacy-policy"
+                >
                   <li className="pb-[2px] hover:text-gray-400 hover:duration-150">
                     Privacy Policy
                   </li>
                 </NavLink>
-                <NavLink onClick={()=> ScrollToTop()} to="/legal/refund-policy">
+                <NavLink
+                  onClick={() => ScrollToTop()}
+                  to="/legal/refund-policy"
+                >
                   <li className="pb-[2px] hover:text-gray-400 hover:duration-150">
                     Refund Policy
                   </li>
                 </NavLink>
-                <NavLink onClick={()=> ScrollToTop()} to="/legal/cookie-policy">
+                <NavLink
+                  onClick={() => ScrollToTop()}
+                  to="/legal/cookie-policy"
+                >
                   <li className="pb-[2px] hover:text-gray-400 hover:duration-150">
                     Cookie Policy
                   </li>
