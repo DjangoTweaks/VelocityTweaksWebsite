@@ -2,6 +2,7 @@ import React from "react";
 import "../index.css";
 import FadeInUpwardsText from "../components/ui/FadeInUpwardsText";
 import QuestionCard from "../components/ui/QuestionCard";
+import ScrollToTopOnMount from "../utils/ScrollToTopOnMount";
 
 export function FAQ() {
   const frequentlyAskedQuestions = [
@@ -77,8 +78,11 @@ export function FAQ() {
   ];
 
   return (
+
+    
     <div>
-      <div className="bg-gradient-to-b from-[#000000] from-10% via-[#1a0404] via-40% to-[#011422] to-70% bg-blend-screen pb-32  ">
+      <ScrollToTopOnMount/>
+      <div className="bg-gradient-to-b from-[#000000] from-10% via-[#1a0404] via-40% to-[#011422] to-70% bg-blend-screen pb-32" id="faqtop">
         <div className="h-full w-[350px] md:w-[600px] lg:w-full mx-auto lg:mx-0">
           <div className="lg:container lg:mx-auto">
             <div className="flex flex-col justify-start">

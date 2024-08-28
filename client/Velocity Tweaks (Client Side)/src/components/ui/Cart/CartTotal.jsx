@@ -12,16 +12,12 @@ export default function CartTotal() {
     }, 0);
   }
 
-  function GrandTotal()
-  {
-    let tax = 0; 
-    return SubTotal() + tax
+  function GrandTotal() {
+    let tax = 0;
+    return SubTotal() + tax;
   }
 
-
-
-
-//   console.log("SubTotal is: ", SubTotal());
+  //   console.log("SubTotal is: ", SubTotal());
 
   return (
     <div>
@@ -45,7 +41,9 @@ export default function CartTotal() {
         </div>
         <div className="flex justify-between px-1 py-4">
           <div className="font-Inter font-bold text-[20px] ">Total</div>
-          <div className="font-Inter font-bold text-[20px]">{CurrencyConverterUSD(GrandTotal())}</div>
+          <div className="font-Inter font-bold text-[20px]">
+            {CurrencyConverterUSD(GrandTotal())}
+          </div>
         </div>
         <button className="bg-white hover:ease-in-out hover:duration-75 hover:bg-slate-200 rounded-[503px] p-2 text-black font-Roboto font-bold px-2 w-full ">
           Proceed To Checkout

@@ -1,0 +1,3 @@
+body{
+    @apply bg-gradient-to-b from-[#000000] from-10% via-[#1a0404] via-40% to-[#011422] to-70% bg-blend-screen
+}

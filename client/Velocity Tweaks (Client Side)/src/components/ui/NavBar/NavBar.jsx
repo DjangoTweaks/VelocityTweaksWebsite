@@ -6,6 +6,7 @@ import { Link, NavLink } from "react-router-dom";
 import { IoCart } from "react-icons/io5";
 import { IoPerson } from "react-icons/io5";
 import Cart from "./Cart";
+import UserAccount from "./UserAccount";
 
 export default function NavBar() {
   const [button, setButton] = useRecoilState(buttonState);
@@ -45,16 +46,9 @@ export default function NavBar() {
           </div>
 
           <div className="flex items-center gap-3">
-            <div>
-              <ul className="text-white hidden md:block">
-                <NavLink to="/login">
-                  {" "}
-                  <IoPerson size={23} className="hover:text-slate-300" />
-                </NavLink>
-              </ul>
-            </div>
+            <UserAccount></UserAccount>
 
-           <Cart></Cart>
+            <Cart></Cart>
 
             <NavLink to="/store">
               <button className="bg-gradient-to-r h-12 w-28 from-[#E32723] via-[#8F74A6] to-[#07A4FF] text-white rounded-full p-1">
