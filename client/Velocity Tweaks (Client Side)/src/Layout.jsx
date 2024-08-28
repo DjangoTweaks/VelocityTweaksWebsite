@@ -8,10 +8,9 @@ import { RecoilRoot } from "recoil";
 export default function Layout(props)
 {
     return <div className="text-white">
-        <RecoilRoot>
         <NavBar></NavBar>
         {props.page}
         <Footer></Footer>
-        </RecoilRoot>
     </div>
 }
+

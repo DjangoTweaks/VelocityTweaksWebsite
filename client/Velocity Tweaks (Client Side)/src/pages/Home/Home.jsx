@@ -12,6 +12,7 @@ import AboutUs from "../../components/ui/AboutUs";
 import Review from "../../components/ui/Review";
 import Footer from "../../components/ui/Footer";
 import ContactUs from "../../components/ui/ContactUs";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (

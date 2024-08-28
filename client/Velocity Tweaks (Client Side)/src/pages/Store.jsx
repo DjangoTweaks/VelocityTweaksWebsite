@@ -72,7 +72,7 @@ export function Store() {
               <div className="flex items-center text-gray-300 text-lg pt-1 font-semibold">
                 $
               </div>
-              <div className="text-5xl">10</div>
+              <div className="text-5xl">14.99</div>
             </div>
 
             <div className="flex flex-col  mt-4 space-y-3 text-lg">
