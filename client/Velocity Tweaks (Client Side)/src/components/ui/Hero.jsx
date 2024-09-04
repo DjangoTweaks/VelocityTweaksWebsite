@@ -53,7 +53,7 @@ export default function Hero() {
           fadeClass="text-white  block  tracking-wider font-light md:text-2xl w-full md:w-[700px] text-md leading-7 	md:leading-10 font-Roboto md:pt-16 pt-16"
         ></FadeInUpwardsText>
 
-        <div className="flex mt-12 md:mt-16">
+        <div className="flex mt-12 md:mt-8">
           <Link to="store">
             <button className="text-white bg-[#07A4FF] transition-all ease-in duration-150 hover:bg-[#0583CC]  font-Inter font-medium text-lg rounded-full  h-16  w-40 p-3">
               Buy Now

@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import { FAQ } from "./pages/FAQ";
 import {
   createBrowserRouter,
   RouterProvider,
   Route,
   Link,
+  Navigate,
 } from "react-router-dom";
 import {
   RecoilRoot,
@@ -27,7 +28,19 @@ import ResetPassword from "./pages/ResetPassword";
 import SomethingWentWrong from "./pages/SomethingWentWrong";
 import { ToastContainer } from "react-toastify";
 import Testing from "./pages/Testing";
-
+import ReviewBasic from "./pages/ReviewBasic";
+import AdminLogin from "./pages/AdminLogin/AdminLogin";
+import LoginNew from "./pages/LoginNew/LoginNew";
+import ProtectedRoutes from "./utils/ProtectedRoute";
+import UserDashboard from "./pages/User/Dashboard/Dashboard";
+import UserProfileView from "./pages/User/Dashboard/UserProfileView";
+import UserOrderView from "./pages/User/Dashboard/UserOrderView";
+import Review from "./pages/User/Dashboard/Review";
+import Legal from "./pages/Legal";
+import TOS from "./components/ui/TOS";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import RefundPolicy from "./components/RefundPolicy";
+import CookiePolicy from "./components/CookiePolicy";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,6 +48,59 @@ const router = createBrowserRouter([
     errorElement: (
       <Layout page={<SomethingWentWrong></SomethingWentWrong>}></Layout>
     ),
+  },
+  {
+    element: <Layout page={<ProtectedRoutes />}></Layout>,
+    children: [
+      {
+        path: "/user/dashboard",
+        element: <UserDashboard />,
+        children: [
+          {
+            index: true,
+            element: <Navigate to="profile" replace />,
+          },
+          {
+            path: "profile",
+            element: <UserProfileView />,
+          },
+          {
+            path: "orders",
+            element: <UserOrderView />,
+          },
+          {
+            path: "reviews",
+            element: <Review />,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: "/legal",
+    element: <Layout page={<Legal Heading="Legal" />}></Layout>,
+    children: [
+      {
+        index: true,
+        element: <Navigate to="terms-of-service" replace />,
+      },
+      {
+        path: "terms-of-service",
+        element: <TOS />,
+      },
+      {
+        path: "privacy-policy",
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: "refund-policy",
+        element: <RefundPolicy />,
+      },
+      {
+        path: "cookie-policy",
+        element: <CookiePolicy />,
+      },
+    ],
   },
   {
     path: "/faq",
@@ -50,7 +116,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Layout page={<Login></Login>}></Layout>,
+    element: <Layout page={<LoginNew></LoginNew>}></Layout>,
   },
   {
     path: "/register",
@@ -64,25 +130,39 @@ const router = createBrowserRouter([
     path: "/cart",
     element: <Layout page={<Cart />}></Layout>,
   },
+  {
+    path: "/review/basic",
+    element: <Layout page={<ReviewBasic></ReviewBasic>}></Layout>,
+  },
+  {
+    path: "/review/premium",
+    element: <Layout page={<ReviewBasic></ReviewBasic>}></Layout>,
+  },
+  {
+    path: "/admin/login",
+    element: <Layout page={<AdminLogin></AdminLogin>}></Layout>,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <div className="scroll-smooth">
-      <RouterProvider router={router} />
-      <ToastContainer
-        position="bottom-right"
-        autoClose={1000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-        transition:Bounce
-      />
-    </div>
+    <RecoilRoot>
+      <div className="scroll-smooth">
+        <RouterProvider router={router} />
+        <ToastContainer
+          position="bottom-right"
+          autoClose={1000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition:Bounce
+        />
+      </div>
+    </RecoilRoot>
   </React.StrictMode>
 );
