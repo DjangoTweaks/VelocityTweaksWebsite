@@ -1,12 +1,17 @@
 const express = require("express");
-const path= require("path")
-const app =express();
+const path = require("path");
+const app = express();
 const cors = require('cors');
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
-const {restrictToLoggedInUserOnly} = require("./middlewares/auth");
 const passport = require("./config/passport");
+const { restrictToLoggedInUserOnly } = require("./middlewares/auth");
 
+const cartRoutes = require('./routes/cartRoutes');
+const checkoutRoutes = require('./routes/checkoutRoutes');
+const webhookRoutes = require('./routes/webhookRoutes');
+const downloadRoutes = require('./routes/downloadRoutes');
+const productRoutes = require('./routes/productRoutes');
 
 // CORS Configuration
 app.use(cors({
@@ -14,47 +19,51 @@ app.use(cors({
   credentials: true, // Allow credentials such as cookies to be sent
 }));
 
-
-const userRoute = require("./routes/user")
-const staticRouter= require("./routes/staticRouter");
-const openRouter = require("./routes/openRouter");
-const authRouter = require("./routes/auth");
-
-const queryRoutes = require("./routes/queryRoutes");
-const reviewRoutes = require("./routes/reviewRoutes")
-
-const router= express.Router();
-
-
-app.use(express.json())
-app.use(express.urlencoded({extended:false}))
+// Cookie and session middlewares
 app.use(cookieParser());
+app.use(session({
+  secret: "Aaditya@3737",
+  resave: false,
+  saveUninitialized: false,
+}));
 
-
-app.use(
-    session({
-      secret: "Aaditya@3737",
-      resave: false,
-      saveUninitialized: false,
-    })
-  );
-
+// Passport initialization
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Stripe webhook should use raw body before other middleware
+app.use('/webhook', express.raw({ type: 'application/json' }), webhookRoutes);
 
-app.use("/user", userRoute);
-app.use("/home", restrictToLoggedInUserOnly, staticRouter);
-app.use("/open", openRouter);
-app.use("/auth", authRouter);
+// Other middlewares
+app.use(express.json()); // Parse JSON bodies for other routes
+app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
-app.use('/api/queries', queryRoutes);
-app.use('/api/review', reviewRoutes);
+// Other routes
+app.use("/user", require("./routes/user"));
+app.use("/home", restrictToLoggedInUserOnly, require("./routes/staticRouter"));
+app.use("/open", require("./routes/openRouter"));
+app.use("/auth", require("./routes/auth"));
+app.use('/api/queries', require("./routes/queryRoutes"));
+app.use('/api/review', require("./routes/reviewRoutes"));
 
-app.set("view engine","ejs");
+// Routes for cart, checkout, and products
+app.use('/cart', restrictToLoggedInUserOnly, cartRoutes);
+app.use('/checkout', checkoutRoutes);
+app.use('/download', downloadRoutes);
+app.use('/products', productRoutes);
+
+// Serve static files for product downloads
+app.use('/downloads', express.static(path.join(__dirname, 'downloads')));
+
+// View engine setup
+app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
 
-const{connectMongoDB}= require('./connect')
-connectMongoDB('mongodb+srv://Aaditya:admin@cluster0.kxn151h.mongodb.net/D1')
+// MongoDB connection
+const { connectMongoDB } = require('./connect');
+connectMongoDB('mongodb+srv://Aaditya:admin@cluster0.kxn151h.mongodb.net/D2');
 
-app.listen(3000)
+// Start the server
+app.listen(3000, () => {
+  console.log("Server is running on http://localhost:3000");
+});
