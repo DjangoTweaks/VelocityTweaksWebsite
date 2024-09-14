@@ -1,0 +1,45 @@
+<!-- server/views/products.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop</title>
+  <style>
+    input[type="submit"], button {
+      height: 40px;
+      width: 200px;
+      border: none;
+      border-radius: 5px;
+      background-color: #0070f3;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .product {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="product">
+    <h2>Product 1 - $10</h2>
+    <form action="/cart/add-to-cart" method="POST">
+      <input type="hidden" name="productName" value="WittCepter Product 1">
+      <input type="hidden" name="priceId" value="<%= product1 %>">
+      <input type="submit" value="Add to Cart">
+    </form>
+  </div>
+  <div class="product">
+    <h2>Product 2 - $20</h2>
+    <form action="/cart/add-to-cart" method="POST">
+      <input type="hidden" name="productName" value="WittCepter Product 2">
+      <input type="hidden" name="priceId" value="<%= product2 %>">
+      <input type="submit" value="Add to Cart">
+    </form>
+  </div>
+  <button onclick="location.href='/cart/cart'">Visit Cart</button>
+</body>
+</html>

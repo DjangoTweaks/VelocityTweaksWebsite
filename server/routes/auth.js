@@ -2,6 +2,8 @@ const express = require("express");
 const passport = require("passport");
 const router = express.Router();
 
+const authController = require('../controllers/authController');
+
 // Google Authentication for Login
 router.get(
   "/google/login",
@@ -36,13 +38,24 @@ router.get("/logout", (req, res, next) => {
 
 
 //backend endpoint auth.
-router.get('/check-auth', (req, res) => {
-  if (req.isAuthenticated()) {
-    res.status(200).send({ authenticated: true });
-  } else {
-    res.status(401).send({ authenticated: false });
-  }
-});
+// router.get('/check-auth', (req, res) => {
+//   if (req.isAuthenticated() && req.user && req.user.googleId) {
+//     // The user is authenticated and has a googleId in the session
+//     res.status(200).send({
+//       authenticated: true,
+//       googleId: req.user.googleId, // Optionally return the googleId
+//     });
+//   } else {
+//     // The user is not authenticated or googleId is missing
+//     res.status(401).send({
+//       authenticated: false,
+//       message: req.isAuthenticated() ? 'Google ID missing from session' : 'User not authenticated',
+//     });
+//   }
+// });
+
+// Route to check authentication status
+router.get('/check-auth', authController.checkAuth);
 
 
 
