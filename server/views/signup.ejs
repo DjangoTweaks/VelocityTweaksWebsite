@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+</head>
+<body>
+   <h1>Signup</h1>
+
+   <form action="/user/signup" method="post">
+      <label>Name</label>
+      <input type="text" name="name" id="name">
+      <label>Email</label>
+      <input type="email" name="email" id="email">
+      <label>Password</label>
+      <input type="password" name="password" id="password">
+      <button type="submit">Signup</button>
+   </form>
+   <a href="/auth/google/signup">Signup with Google</a>
+   <div>
+       <a href="/user/login">Login</a>
+   </div>
+</body>
+</html>

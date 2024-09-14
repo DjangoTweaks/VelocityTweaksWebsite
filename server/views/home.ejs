@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      background-color: #333;
+      padding: 1em;
+    }
+
+    .nav-links {
+      list-style-type: none;
+      display: flex;
+      gap: 1em;
+    }
+
+    .nav-links li {
+      display: inline;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .user-profile a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+    }
+
+    .container {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .review-button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .review-button:hover {
+      background-color: #0056b3;
+    }
+
+    .logout-form {
+      margin-top: 20px;
+    }
+
+    .logout-button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #FF0000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .logout-button:hover {
+      background-color: #cc0000;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <ul class="nav-links">
+      <li><a href="/home">Home</a></li>
+      <li><a href="/home/store">Store</a></li>
+      <li><a href="/home/faq">FAQ</a></li>
+    </ul>
+    <div class="user-profile">
+      <a href="/user/profile">User Profile</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1>Welcome to the Home Page!</h1>
+    <p>Only logged-in users can see this page.</p>
+    <button class="review-button" onclick="window.location.href='/home/review'">Leave a Review</button>
+    
+    <form class="logout-form" action="/user/logout" method="get">
+      <button class="logout-button" type="submit">Logout</button>
+    </form>
+  </div>
+</body>
+</html>
