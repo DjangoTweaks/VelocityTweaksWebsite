@@ -6,6 +6,7 @@ import "../index.css";
 import { PRODUCTS } from "../utils/products";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { cartState } from "../services/state/store";
+import ScrollToTopOnMount from "../utils/ScrollToTopOnMount";
 
 export function Store() {
   const [cart, setCart] = useRecoilState(cartState);
@@ -36,7 +37,7 @@ export function Store() {
       });
 
       toast.info(`${utilName} Added To Cart`, {
-      position: "bottom-right",
+        position: "bottom-right",
         autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -51,6 +52,8 @@ export function Store() {
 
   return (
     <div className="bg-gradient-to-b from-[#000000] from-10% via-[#1a0404] via-40% to-[#011422] to-70% bg-blend-screen pb-32 h-full ">
+      <ScrollToTopOnMount />
+
       <div className="flex justify-center text-white font-Inter font-semibold text-4xl my-6 lg:mb-20 lg:text-6xl ">
         Choose Your Utility
       </div>
@@ -201,8 +204,6 @@ export function Store() {
             </button>
           </div>
         </div>
-
-  
       </div>
     </div>
   );

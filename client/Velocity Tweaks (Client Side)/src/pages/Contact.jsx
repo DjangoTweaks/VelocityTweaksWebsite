@@ -14,6 +14,7 @@ import { domainName } from "../utils/domainName";
 import { Bounce, toast } from "react-toastify";
 import { useRecoilState } from "recoil";
 import { contactFormState } from "../services/state/store";
+import ScrollToTopOnMount from "../utils/ScrollToTopOnMount";
 
 export function Contact() {
   const [responses, setResponses] = useRecoilState(contactFormState);
@@ -114,6 +115,7 @@ export function Contact() {
   return (
     <div className="bg-gradient-to-b from-[#000000] from-10% via-[#1a0404] via-40% to-[#011422] to-70% bg-blend-screen pb-32">
       <div className="container mx-auto h-full">
+      <ScrollToTopOnMount/>
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:place-items-center">
           <div className="ml-2">
             <div className="mt-12">

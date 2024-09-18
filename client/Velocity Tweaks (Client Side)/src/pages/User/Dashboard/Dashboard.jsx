@@ -9,7 +9,7 @@ export default function Dashboard() {
         Dashboard
       </div>
 
-      <div className="container mx-auto mt-12 w-[1300px]">
+      <div className="container mx-auto mt-12 md:w-[700px]  lg:w-[1000px] ">
         <div className="flex  ">
           <SideBarDashboard></SideBarDashboard>
           <DashboardViews></DashboardViews>
