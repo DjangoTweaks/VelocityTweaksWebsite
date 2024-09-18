@@ -10,7 +10,10 @@ export default function SideBarDashboard() {
 
   return (
     <div className="bg-gray-800 h-screen rounded-xl w-[350px] border-[1px] border-gray-600 ">
-      <div className="flex justify-center pt-10">
+
+      <div className=" " >
+        
+          <div className="flex justify-center pt-10">
         <img src={userInfo.photo} className="rounded-full w-13 h-13"></img>
       </div>
       <div className="text-center font-Inter font-medium text-lg pt-2">
@@ -19,6 +22,8 @@ export default function SideBarDashboard() {
       <div className="text-gray-400 font-Inter font-light text-sm text-center ">
         {userInfo.email}
       </div>
+        </div>    
+    
 
       <div className="mx-2  h-[500px] mt-12">
         <NavLink

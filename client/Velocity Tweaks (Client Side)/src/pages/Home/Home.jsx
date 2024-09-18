@@ -13,15 +13,17 @@ import Review from "../../components/ui/Review";
 import Footer from "../../components/ui/Footer";
 import ContactUs from "../../components/ui/ContactUs";
 import { Link } from "react-router-dom";
+import ScrollToTopOnMount from "../../utils/ScrollToTopOnMount";
 
 export default function Home() {
   return (
     <div id="homediv" >
+      <ScrollToTopOnMount/>
       <Hero></Hero>
       <AboutUs></AboutUs>
       <Review></Review>
       <div className="mt-24">
-        <ContactUs></ContactUs>
+      <ContactUs></ContactUs>
       </div>
     </div>
   );
