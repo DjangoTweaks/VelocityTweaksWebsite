@@ -10,6 +10,7 @@ import BasicProduct from "../../components/ui/Store/BasicProduct";
 import PremiumProduct from "../../components/ui/Store/PremiumProduct";
 import { Navigate, useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
+import { addToCart } from "../../utils/CartStateManipulation";
 
 export function Store() {
   const [cart, setCart] = useRecoilState(cartState);
@@ -55,7 +56,7 @@ export function Store() {
 
   const navigate = useNavigate();
 
-  function buttonClick() {
+  function ProductButtonClick(utilName, productName, priceId) {
     if (isAuthenticated === null) {
       return;
     }
@@ -74,6 +75,7 @@ export function Store() {
       navigate("/login");
     } else {
       // logic to handle add to cart
+      addToCart(utilName, productName, priceId);
     }
   }
 
@@ -87,10 +89,26 @@ export function Store() {
 
       <div className="grid grid-cols-1 container px-4 space-y-10 md:mx-auto md:max-w-[500px] lg:grid-cols-2 lg:space-y-0  lg:space-x-6 lg:max-w-[1024px] lg:h-screen  ">
         <div className="lg:flex lg:flex-col lg:justify-start">
-          <BasicProduct onClick={buttonClick} />
+          <BasicProduct
+            onClick={() => {
+              ProductButtonClick(
+                "Basic Utility",
+                "WittCepter Product 1",
+                "price_1PpdduCUgsBmQhDaFQXyIoTK"
+              );
+            }}
+          />
         </div>
 
-        <PremiumProduct onClick={buttonClick} />
+        <PremiumProduct
+          onClick={() => {
+            ProductButtonClick(
+              "Premium Utility",
+              "WittCepter Product 2",
+              "price_1PqEf5CUgsBmQhDaSN8IIsOx"
+            );
+          }}
+        />
       </div>
     </div>
   );
