@@ -16,7 +16,7 @@ import {
   useRecoilState,
   useRecoilValue,
 } from "recoil";
-import { Store } from "./pages/Store";
+import { Store } from "./pages/Store/Store";
 import { Contact } from "./pages/Contact";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
@@ -74,6 +74,10 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
     ],
   },
   {
@@ -125,10 +129,6 @@ const router = createBrowserRouter([
   {
     path: "/forgot",
     element: <Layout page={<ResetPassword></ResetPassword>}></Layout>,
-  },
-  {
-    path: "/cart",
-    element: <Layout page={<Cart />}></Layout>,
   },
   {
     path: "/review/basic",
