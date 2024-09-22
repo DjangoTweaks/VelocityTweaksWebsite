@@ -129,4 +129,5 @@ module.exports = {
     addToCart,
     updateCart,
     removeFromCart,
+    viewCartFix
 };
