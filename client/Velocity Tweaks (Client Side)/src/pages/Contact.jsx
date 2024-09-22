@@ -67,7 +67,7 @@ export function Contact() {
     } else {
       try {
         const toastAsync = toast.loading("Submitting...", toastProperties);
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         axios
           .post(domainName + "/api/queries", {
             name: data.firstName,
