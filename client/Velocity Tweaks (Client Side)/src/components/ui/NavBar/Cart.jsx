@@ -8,14 +8,13 @@ export default function Cart() {
   const currentCartState = useRecoilValue(cartState);
 
   const notificationCount = useRecoilValue(cartNotificationSelector)
-
   return (
     <div>
       <ul className="text-white hidden md:block">
         <NavLink to="/cart">
           <div className="static">
             {notificationCount === 0 ? (
-              <IoCart size={28} className="hover:text-slate-300 mr-1 "></IoCart>
+              <IoCart size={28} className="hover:text-slate-300 mr-1"></IoCart>
             ) : (
               <div>
                 <IoCart

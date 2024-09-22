@@ -56,7 +56,7 @@ export function Store() {
 
   const navigate = useNavigate();
 
-  function ProductButtonClick(utilName, productName, priceId) {
+  async function ProductButtonClick(utilName, productName, priceId) {
     if (isAuthenticated === null) {
       return;
     }
@@ -75,7 +75,7 @@ export function Store() {
       navigate("/login");
     } else {
       // logic to handle add to cart
-      addToCart(utilName, productName, priceId);
+      await addToCart(utilName, productName, priceId);
     }
   }
 

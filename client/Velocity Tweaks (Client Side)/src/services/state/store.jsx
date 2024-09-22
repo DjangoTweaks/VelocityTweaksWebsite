@@ -2,7 +2,6 @@ import { atom, atomFamily, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 import axios from "axios";
 import { domainName } from "../../utils/domainName";
-
 const { persistAtom } = recoilPersist();
 
 export const buttonState = atom({
@@ -21,24 +20,74 @@ export const cartState = atom({
     {
       id: 1,
       productName: "Velocity Tweaks Basic Utility",
-      price: 10.0,
-      count: 0,
+      price: 9.99,
+      quantity: 0,
     },
     {
       id: 2,
-      productName: "Velocity Tweaks Standard Utility",
-      price: 20.0,
-      count: 0,
-    },
-    {
-      id: 3,
       productName: "Velocity Tweaks Premium Utility",
-      price: 30.0,
+      price: 29.9,
       count: 0,
     },
   ],
   effects_UNSTABLE: [persistAtom],
 });
+
+export const cartStateDB = atom({
+  key: "cartStateDB",
+  default: null,
+  effects: [
+    ({ setSelf }) => {
+      let ignore = false;
+
+      const fetchCartData = async () => {
+        try {
+          const response = await axios.get(domainName + "/cart/cart-fix", {
+            withCredentials: true,
+          });
+          if (!ignore) {
+            console.log("response", response.data.items);
+
+            const x = response.data.items;
+
+            if (response.data.items.length === 0) {
+              return setSelf([]);
+            }
+
+            x.forEach((item) => {
+              if (item.productName === "WittCepter Product 1") {
+                item.price = 9.99;
+              }
+              if (item.productName === "WittCepter Product 2") {
+                item.price = 29.99;
+              }
+            });
+
+            console.log("x", x);
+
+            setSelf(response.data.items); // Populate atom with fetched data
+          }
+        } catch (error) {
+          if (!ignore) {
+            setSelf([]); // Handle error case, e.g., setting to empty array
+            console.error("Error fetching cart data:", error);
+          }
+        }
+      };
+      fetchCartData();
+
+      // Cleanup function to prevent state updates if component unmounts
+      return () => {
+        ignore = true;
+      };
+    },
+  ],
+});
+
+
+
+
+
 
 export const cartNotificationSelector = selector({
   key: "cartNotificationSelector",
@@ -47,7 +96,7 @@ export const cartNotificationSelector = selector({
     let cartNotis = 0;
 
     cartStateVal.forEach((d) => {
-      if (d.count > 0) {
+      if (d.quantity > 0) {
         cartNotis++;
       }
     });

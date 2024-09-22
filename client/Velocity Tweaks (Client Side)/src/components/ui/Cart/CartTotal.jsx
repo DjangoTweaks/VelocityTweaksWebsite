@@ -1,14 +1,14 @@
 import React from "react";
-import { cartState } from "../../../services/state/store";
+import { cartState, cartStateDB } from "../../../services/state/store";
 import { useRecoilValue } from "recoil";
 import { CurrencyConverterUSD } from "../../../utils/CurrencyConverter";
 
 export default function CartTotal() {
-  const cart = useRecoilValue(cartState);
+  const cart = useRecoilValue(cartStateDB);
 
   function SubTotal() {
     return cart.reduce((accumulator, currentVal) => {
-      return accumulator + currentVal.count * currentVal.price;
+      return accumulator + currentVal.quantity * currentVal.price;
     }, 0);
   }
 
