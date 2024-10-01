@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { buttonState } from "../../../services/state/store";
-import { useRecoilState } from "recoil";
+import React, { useEffect, useState } from "react";
+import { authStateAtom, buttonState } from "../../../services/state/store";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { SideBar } from "../SideBar";
 import { Link, NavLink } from "react-router-dom";
 import { IoCart } from "react-icons/io5";
@@ -10,7 +10,24 @@ import UserAccount from "./UserAccount";
 
 export default function NavBar() {
   const [button, setButton] = useRecoilState(buttonState);
+  const authState = useRecoilValue(authStateAtom); 
+  const [authenticationState, setAuthenticationState] = useState(false);
+  
 
+  useEffect(()=>{
+    function authStateSetting()
+    {
+      if(authState === null)
+      {
+        return setAuthenticationState(false);
+      }
+      return authState ? setAuthenticationState(true) : setAuthenticationState(false)
+    }
+
+    authStateSetting(); 
+  }, [authState])
+
+  
   function boolValChanger() {
     setButton(!button);
   }
@@ -48,7 +65,7 @@ export default function NavBar() {
           <div className="flex items-center gap-3">
             <UserAccount></UserAccount>
 
-            <Cart></Cart>
+            {authenticationState ? <Cart></Cart> : <div></div> }
 
             <NavLink to="/store">
               <button className="bg-gradient-to-r h-12 w-28 from-[#E32723] via-[#8F74A6] to-[#07A4FF] text-white rounded-full p-1">

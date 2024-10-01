@@ -45,14 +45,14 @@ const checkoutSuccess = async (req, res) => {
   console.log(sessionId)
   if (!sessionId) {
     
-    return res.send('<h1>No session found</h1>');
+    return res.send('<h1>No session found</h1>'); //status code for FE.
   }
 
   // Find the order using the new `checkoutSessionId` field
   const order = await Order.findOne({ checkoutSessionId: sessionId });
   if (!order) {
     //console.log(checkoutSessionId)
-    return res.send('<h1>No order found</h1>');
+    return res.send('<h1>No order found</h1>');  //status code for FE.
   }
 
   let downloadLinks = '<h1>Thanks for your order!</h1><h2>Download your products:</h2><ul>';

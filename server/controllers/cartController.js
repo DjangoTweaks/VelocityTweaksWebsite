@@ -34,6 +34,29 @@ const viewCart = async (req, res) => {
   res.send(cartHTML);
 };
 
+const viewCartFix = async (req, res) => {
+  const cart = await Cart.findOne({ userId: req.user.googleId });
+
+  if (!cart || cart.items.length === 0) {
+    return res.status(200).json({
+      msg: "Your Cart is Empty",
+      items: []
+    })
+  }
+
+  const cartItems = cart.items.map(item => ({
+    productName: item.productName,
+    quantity: item.quantity
+  }));
+
+  res.status(200).json({
+    msg: "Your Cart",
+    items: cartItems
+  })
+};
+
+
+
 
 // Add to Cart Route
 const addToCart = async (req, res) => {
@@ -106,4 +129,5 @@ module.exports = {
     addToCart,
     updateCart,
     removeFromCart,
+    viewCartFix
 };
