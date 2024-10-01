@@ -27,13 +27,12 @@ const processCheckout = async (req, res) => {
           line_items: lineItems,
           mode: 'payment',
           success_url: `${URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-          cancel_url: `${URL}/cancel`,
+          cancel_url: `http://localhost:5173/cancel`,
           metadata: {
             googleId: req.user.googleId // Pass the googleId (or userId) here
         }
         });
-    
-        res.redirect(session.url);
+        res.status(200).json(session.url);
       } catch (error) {
         res.status(500).json({ error: error.message });
       }

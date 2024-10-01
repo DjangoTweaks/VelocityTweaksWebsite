@@ -32,7 +32,7 @@ export async function addToCart(utilName, productName, priceId) {
       }
     )
     .then((response) => {
-      console.log(utilName + "added to cart:", response.data);
+      console.log(utilName + "added to cart:");
       toast.update(toastAsync, {
         render: utilName + " Added To Cart Successfully",
         type: "Success",
