@@ -46,7 +46,7 @@ export const cartStateDB = atom({
             withCredentials: true,
           });
           if (!ignore) {
-            console.log("response", response.data.items);
+            console.log("cartStateDB", response.data.items);
 
             const x = response.data.items;
 
@@ -63,7 +63,6 @@ export const cartStateDB = atom({
               }
             });
 
-            console.log("x", x);
 
             setSelf(response.data.items); // Populate atom with fetched data
           }
@@ -84,26 +83,19 @@ export const cartStateDB = atom({
   ],
 });
 
-
-
-
-
-
-export const cartNotificationSelector = selector({
-  key: "cartNotificationSelector",
+export const cartLengthSelector = selector({
+  key: "cartLengthSelector",
   get: ({ get }) => {
-    const cartStateVal = get(cartState);
-    let cartNotis = 0;
-
-    cartStateVal.forEach((d) => {
-      if (d.quantity > 0) {
-        cartNotis++;
-      }
-    });
-
-    return cartNotis;
+    const cart = get(cartStateDB);
+    return cart ? cart.length : 0; // Return 0 if cart is null or empty
   },
 });
+
+export const cartNotiState = atom({
+  key: "cartNotiState",
+  default: cartLengthSelector
+});
+
 
 export const contactFormState = atom({
   key: "contactFormState",

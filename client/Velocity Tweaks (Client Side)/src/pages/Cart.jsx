@@ -5,6 +5,7 @@ import {
   useRecoilRefresher_UNSTABLE,
   useRecoilState,
   useRecoilValue,
+  useResetRecoilState,
 } from "recoil";
 import { cartState, cartStateDB } from "../services/state/store";
 import { Link } from "react-router-dom";
@@ -16,7 +17,6 @@ export default function Cart() {
   const [cartStateNew, setCartStateNew] = useRecoilState(cartStateDB);
 
 
-
   useEffect(() => {
     const fetchCartData = async () => {
       let ignore = false;
@@ -26,7 +26,6 @@ export default function Cart() {
           withCredentials: true,
         });
         if (!ignore) {
-          console.log("response from use effect", response.data.items);
 
           const x = response.data.items;
 
@@ -43,8 +42,7 @@ export default function Cart() {
             }
           });
 
-          console.log("x", x);
-
+           
           setCartStateNew(response.data.items); // Populate atom with fetched data
         }
       } catch (error) {
@@ -55,6 +53,7 @@ export default function Cart() {
       }
     };
     fetchCartData();
+
   }, []);
 
 

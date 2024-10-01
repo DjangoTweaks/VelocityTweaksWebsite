@@ -19,7 +19,6 @@ export default function ClearCart() {
         const response = await axios.get(domainName + "/cart/cart-fix", {
           withCredentials: true,
         });
-          console.log("response from use effect in cleart cart", response.data.items);
 
           const x = response.data.items;
 
@@ -36,7 +35,6 @@ export default function ClearCart() {
             }
           });
 
-          console.log("x", x);
 
           setCartStateNew(response.data.items); // Populate atom with fetched data
         

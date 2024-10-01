@@ -2,6 +2,8 @@ import React from "react";
 import { cartState, cartStateDB } from "../../../services/state/store";
 import { useRecoilValue } from "recoil";
 import { CurrencyConverterUSD } from "../../../utils/CurrencyConverter";
+import { domainName } from "../../../utils/domainName";
+import axios from "axios";
 
 export default function CartTotal() {
   const cart = useRecoilValue(cartStateDB);
@@ -18,6 +20,21 @@ export default function CartTotal() {
   }
 
   //   console.log("SubTotal is: ", SubTotal());
+  async function InitiateStripeCheckoutSession()
+  {
+    try {
+      const response = await axios.post(domainName + "/checkout/", {}, {
+        withCredentials: true
+      }) 
+
+      window.location.href =  response.data; 
+      console.log(response); 
+
+    } catch (error) {
+      console.log(error);        
+    }
+  }
+
 
   return (
     <div>
@@ -45,7 +62,7 @@ export default function CartTotal() {
             {CurrencyConverterUSD(GrandTotal())}
           </div>
         </div>
-        <button className="bg-white hover:ease-in-out hover:duration-75 hover:bg-slate-200 rounded-[503px] p-2 text-black font-Roboto font-bold px-2 w-full ">
+        <button onClick={()=>{InitiateStripeCheckoutSession()}}  className="bg-white hover:ease-in-out hover:duration-75 hover:bg-slate-200 rounded-[503px] p-2 text-black font-Roboto font-bold px-2 w-full ">
           Proceed To Checkout
         </button>
       </div>
