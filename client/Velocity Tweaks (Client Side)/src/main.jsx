@@ -41,6 +41,8 @@ import TOS from "./components/ui/TOS";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import RefundPolicy from "./components/RefundPolicy";
 import CookiePolicy from "./components/CookiePolicy";
+import MyKeys from "./pages/User/Dashboard/MyKeys";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -72,6 +74,10 @@ const router = createBrowserRouter([
             path: "reviews",
             element: <Review />,
           },
+          {
+            path: "keys", 
+            element: <MyKeys/>
+          }
         ],
       },
       {
