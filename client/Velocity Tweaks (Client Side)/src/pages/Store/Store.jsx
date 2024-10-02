@@ -3,7 +3,7 @@ import { CiCircleCheck } from "react-icons/ci";
 import "react-toastify/dist/ReactToastify.css";
 import { PRODUCTS } from "../../utils/products";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { authStateAtom, cartState } from "../../services/state/store";
+import { authStateAtom, cartNotiState, cartState } from "../../services/state/store";
 import ScrollToTopOnMount from "../../utils/ScrollToTopOnMount";
 import "../../index.css";
 import BasicProduct from "../../components/ui/Store/BasicProduct";
@@ -56,7 +56,8 @@ export function Store() {
 
   const navigate = useNavigate();
 
-  function ProductButtonClick(utilName, productName, priceId) {
+
+  async function ProductButtonClick(utilName, productName, priceId) {
     if (isAuthenticated === null) {
       return;
     }
@@ -74,8 +75,8 @@ export function Store() {
       });
       navigate("/login");
     } else {
-      // logic to handle add to cart
-      addToCart(utilName, productName, priceId);
+      await addToCart(utilName, productName, priceId);
+      navigate("/cart"); 
     }
   }
 

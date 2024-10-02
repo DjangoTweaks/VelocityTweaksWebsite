@@ -41,6 +41,10 @@ import TOS from "./components/ui/TOS";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import RefundPolicy from "./components/RefundPolicy";
 import CookiePolicy from "./components/CookiePolicy";
+import MyKeys from "./pages/User/Dashboard/MyKeys";
+import Confirmation from "./pages/Payment/Confirmation";
+import Cancellation from "./pages/Payment/Cancellation";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -72,11 +76,23 @@ const router = createBrowserRouter([
             path: "reviews",
             element: <Review />,
           },
+          {
+            path: "keys",
+            element: <MyKeys />,
+          },
         ],
       },
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/checkout/success",
+        element: <Confirmation />,
+      },
+      {
+        path: "/checkout/cancel",
+        element: <Cancellation />,
       },
     ],
   },

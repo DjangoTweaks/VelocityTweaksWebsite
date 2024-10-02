@@ -1,23 +1,69 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { RiArrowRightWideLine } from "react-icons/ri";
 import CartView from "../components/ui/Cart/CartView";
-import { useRecoilValue } from "recoil";
-import { cartState } from "../services/state/store";
+import {
+  useRecoilRefresher_UNSTABLE,
+  useRecoilState,
+  useRecoilValue,
+  useResetRecoilState,
+} from "recoil";
+import { cartState, cartStateDB } from "../services/state/store";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { domainName } from "../utils/domainName";
 
 export default function Cart() {
   const cartStateVal = useRecoilValue(cartState);
+  const [cartStateNew, setCartStateNew] = useRecoilState(cartStateDB);
 
-  console.log(cartStateVal);
+
+  useEffect(() => {
+    const fetchCartData = async () => {
+      let ignore = false;
+      try {
+        
+        const response = await axios.get(domainName + "/cart/cart-fix", {
+          withCredentials: true,
+        });
+        if (!ignore) {
+
+          const x = response.data.items;
+
+          if (response.data.items.length === 0) {
+            return setCartStateNew([]);
+          }
+
+          x.forEach((item) => {
+            if (item.productName === "WittCepter Product 1") {
+              item.price = 9.99;
+            }
+            if (item.productName === "WittCepter Product 2") {
+              item.price = 29.99;
+            }
+          });
+
+           
+          setCartStateNew(response.data.items); // Populate atom with fetched data
+        }
+      } catch (error) {
+        if (!ignore) {
+          setCartStateNew([]); // Handle error case, e.g., setting to empty array
+          console.error("Error fetching cart data:", error);
+        }
+      }
+    };
+    fetchCartData();
+
+  }, []);
+
+
+
+  if (cartStateNew === null) {
+    return <div className="text-white"></div>;
+  }
 
   function checkItemsEmpty() {
-    const x = cartStateVal.filter((data) => {
-      return data.count !== 0;
-    });
-
-    {
-      return x.length === 0 ? true : false;
-    }
+    return cartStateNew.length === 0 ? true : false;
   }
 
   return (
@@ -27,7 +73,7 @@ export default function Cart() {
       </div>
 
       {checkItemsEmpty() ? (
-        <div>
+        <div className="pb-12" >
           <div className="pt-8">
             <div className="text-4xl font-Inter font-medium flex justify-center  ">
               Your Cart is Empty
@@ -46,7 +92,7 @@ export default function Cart() {
       ) : (
         <div>
           <div className="flex font-Inter text-[15px] justify-center pt-3lg:container lg:flex lg:justify-start  lg:container lg:max-w-[1000px] lg:mx-auto lg:pl-1 ">
-            <div className="font-bold">Cart</div>
+            <div className="font-extrabold text-[16px]">Cart</div>
             <div>
               <RiArrowRightWideLine size={30} className="pb-1" />
             </div>
@@ -54,7 +100,7 @@ export default function Cart() {
             <div>
               <RiArrowRightWideLine size={30} className="pb-1" />
             </div>
-            <div>Payment Confirmation</div>
+            <div className="">Payment Confirmation</div>
           </div>
           <div className="md:max-w-[700px] md:container md:mx-auto lg:max-w-[1024px] ">
             <CartView></CartView>
