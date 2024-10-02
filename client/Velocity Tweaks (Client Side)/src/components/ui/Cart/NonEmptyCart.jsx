@@ -10,7 +10,7 @@ export default function NonEmptyCart() {
         <div>
           <RiArrowRightWideLine size={30} className="pb-1" />
         </div>
-        <div>Checkout</div>
+        <div className="font-extrabold" >Checkout</div>
         <div>
           <RiArrowRightWideLine size={30} className="pb-1" />
         </div>
