@@ -1,9 +1,114 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MdKey } from "react-icons/md";
 import KeysMap from "./KeysMap";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { domainName } from "../../../utils/domainName";
 
 export default function MyKeys() {
+  const [loadingState, setLoadingState] = useState(false);
+  const [keysState, setKeysState] = useState([]);
+
+  useEffect(() => {
+    let ignore = false;
+    const fetchKeys = async () => {
+      setLoadingState(true);
+      const response = await axios.get(domainName + "/auth/check-auth", {
+        withCredentials: true,
+      });
+
+      if (!ignore) {
+        console.log(response.data.orders);
+        setLoadingState(false);
+      }
+    };
+
+    fetchKeys();
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
+  if (loadingState) {
+    return (
+      <div className="text-white flex justify-center mt-12">
+        Loading Keys...
+      </div>
+    );
+  }
+
+  const keyList1 = [
+    {
+      _id: "66e0685b424027b22106dd12",
+      userId: "104054186874527965373",
+      checkoutSessionId:
+        "cs_test_a1VIjqZo56T0fQlNPk8e2ekKgQdzeFRMOk8hg2fviUcNGgyET8mCJb0Ubt",
+      amount: 2499,
+      currency: "usd",
+      status: "paid",
+      paymentIntentId: "pi_3PxWAnCUgsBmQhDa0B4ouvcC",
+      customerEmail: "asd@gmail.com",
+      customerName: "aaditya dawkar",
+      paymentMethodTypes: ["card"],
+      purchasedAt: "2024-09-10T15:40:11.669Z",
+      purchasedProducts: [
+        {
+          productId: "price_1PqEf5CUgsBmQhDaSN8IIsOx",
+          productName: "Premium utility",
+          _id: "66e0685b424027b22106dd13",
+        },
+      ],
+      licenseKeys: [
+        {
+          productName: "Premium utility",
+          licenseKey: "ADVANCED-0KLW-YQO85-O1EL-NZ1A",
+          _id: "66e0685b424027b22106dd14",
+        },
+      ],
+      __v: 0,
+    },
+    {
+      _id: "66ff0419c147ff3b5befc3dd",
+      userId: "104054186874527965373",
+      checkoutSessionId:
+        "cs_test_a1VIjqZo56T0fQlNPk8e2ekKgQdzeFRMOk8hg2fviUcNGgyET8mCJb0Ubt",
+      amount: 3599,
+      currency: "usd",
+      status: "unpaid",
+      paymentIntentId: "pi_3PxWAnCUgsBmQhDa0B4ouvcC",
+      customerEmail: "asd@gmail.com",
+      customerName: "aaditya dawkar",
+      paymentMethodTypes: ["card"],
+      purchasedAt: "2024-09-10T15:40:11.669Z",
+      purchasedProducts: [
+        {
+          productId: "price_1PqEf5CUgsBmQhDaSN8IIsOx",
+          productName: "Premium utility",
+          _id: "66e0685b424027b22106dd13",
+        },
+      ],
+      licenseKeys: [
+        {
+          productName: "Premium utility",
+          licenseKey: "ADVANCED-0KLW-YQO85-O1EL-NZ1A",
+          _id: "66e0685b424027b22106dd14",
+        },
+      ],
+      __v: 0,
+    },
+  ];
+
+  const allLicenseKeyValues = keyList1.flatMap((item) =>
+    item.licenseKeys.map((key) => {
+      return {
+        productName: key.productName,
+        licenseKey: key.licenseKey,
+      };
+    })
+  );
+  console.log(allLicenseKeyValues);
+
   const keyList = [
     {
       id: 1,
@@ -38,18 +143,17 @@ export default function MyKeys() {
             <table className="w-full">
               <thead className="border-b-[1px]  border-gray-400 h-[30px] border-opacity-50">
                 <tr className="font-Inter text-lg">
-                  <th className="font-normal pl-2">#</th>
                   <th className="font-normal">Utility</th>
                   <th className="font-normal text-center">Key</th>
                 </tr>
               </thead>
 
               <tbody className="text-center">
-                {keyList.map((keyList) => (
+                {allLicenseKeyValues.map((allLicenseKeyValues, index) => (
                   <KeysMap
-                    id={keyList.id}
-                    utilityName={keyList.name}
-                    Key={keyList.code}
+                    key={index}
+                    utilityName={allLicenseKeyValues.productName}
+                    Key={allLicenseKeyValues.licenseKey}
                   />
                 ))}
               </tbody>
