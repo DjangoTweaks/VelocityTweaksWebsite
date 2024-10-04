@@ -44,6 +44,8 @@ import CookiePolicy from "./components/CookiePolicy";
 import MyKeys from "./pages/User/Dashboard/MyKeys";
 import Confirmation from "./pages/Payment/Confirmation";
 import Cancellation from "./pages/Payment/Cancellation";
+import axios from "axios";
+import { domainName } from "./utils/domainName";
 
 const router = createBrowserRouter([
   {
@@ -89,6 +91,12 @@ const router = createBrowserRouter([
       {
         path: "/checkout/success",
         element: <Confirmation />,
+        loader: async () =>{
+          const response = await axios.get(domainName + "/auth/check-auth", {
+            withCredentials: true,
+          });
+          return response.data.orders[response.data.orders.length-1]; 
+        }
       },
       {
         path: "/checkout/cancel",

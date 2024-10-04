@@ -8,6 +8,7 @@ import { domainName } from "../../../utils/domainName";
 export default function MyKeys() {
   const [loadingState, setLoadingState] = useState(false);
   const [keysState, setKeysState] = useState([]);
+  const [ranState, setranState] = useState(false);
 
   useEffect(() => {
     let ignore = false;
@@ -18,8 +19,9 @@ export default function MyKeys() {
       });
 
       if (!ignore) {
-        console.log(response.data.orders);
+        setKeysState(response.data.orders);
         setLoadingState(false);
+        setranState(true);
       }
     };
 
@@ -38,68 +40,11 @@ export default function MyKeys() {
     );
   }
 
-  const keyList1 = [
-    {
-      _id: "66e0685b424027b22106dd12",
-      userId: "104054186874527965373",
-      checkoutSessionId:
-        "cs_test_a1VIjqZo56T0fQlNPk8e2ekKgQdzeFRMOk8hg2fviUcNGgyET8mCJb0Ubt",
-      amount: 2499,
-      currency: "usd",
-      status: "paid",
-      paymentIntentId: "pi_3PxWAnCUgsBmQhDa0B4ouvcC",
-      customerEmail: "asd@gmail.com",
-      customerName: "aaditya dawkar",
-      paymentMethodTypes: ["card"],
-      purchasedAt: "2024-09-10T15:40:11.669Z",
-      purchasedProducts: [
-        {
-          productId: "price_1PqEf5CUgsBmQhDaSN8IIsOx",
-          productName: "Premium utility",
-          _id: "66e0685b424027b22106dd13",
-        },
-      ],
-      licenseKeys: [
-        {
-          productName: "Premium utility",
-          licenseKey: "ADVANCED-0KLW-YQO85-O1EL-NZ1A",
-          _id: "66e0685b424027b22106dd14",
-        },
-      ],
-      __v: 0,
-    },
-    {
-      _id: "66ff0419c147ff3b5befc3dd",
-      userId: "104054186874527965373",
-      checkoutSessionId:
-        "cs_test_a1VIjqZo56T0fQlNPk8e2ekKgQdzeFRMOk8hg2fviUcNGgyET8mCJb0Ubt",
-      amount: 3599,
-      currency: "usd",
-      status: "unpaid",
-      paymentIntentId: "pi_3PxWAnCUgsBmQhDa0B4ouvcC",
-      customerEmail: "asd@gmail.com",
-      customerName: "aaditya dawkar",
-      paymentMethodTypes: ["card"],
-      purchasedAt: "2024-09-10T15:40:11.669Z",
-      purchasedProducts: [
-        {
-          productId: "price_1PqEf5CUgsBmQhDaSN8IIsOx",
-          productName: "Premium utility",
-          _id: "66e0685b424027b22106dd13",
-        },
-      ],
-      licenseKeys: [
-        {
-          productName: "Premium utility",
-          licenseKey: "ADVANCED-0KLW-YQO85-O1EL-NZ1A",
-          _id: "66e0685b424027b22106dd14",
-        },
-      ],
-      __v: 0,
-    },
-  ];
+  const y = 0;
 
-  const allLicenseKeyValues = keyList1.flatMap((item) =>
+
+
+  const allLicenseKeyValues = keysState.flatMap((item) =>
     item.licenseKeys.map((key) => {
       return {
         productName: key.productName,
@@ -107,7 +52,6 @@ export default function MyKeys() {
       };
     })
   );
-  console.log(allLicenseKeyValues);
 
   const keyList = [
     {

@@ -2,9 +2,11 @@ import React from "react";
 import NonEmptyCart from "../../components/ui/Cart/NonEmptyCart";
 import { RiArrowRightWideLine } from "react-icons/ri";
 import { IoMdDownload } from "react-icons/io";
-
+import { useLoaderData } from "react-router-dom";
 
 export default function Confirmation() {
+  const data = useLoaderData();
+  console.log("data", data);
   return (
     <div className="h-screen">
       <div className="font-Inter text-6xl w-full flex justify-center font-semibold pt-12">
@@ -27,7 +29,7 @@ export default function Confirmation() {
       </div>
 
       <div className="bg-[#292929] rounded-xl drop-shadow-2xl bg-opacity-50 mt-4 p-4 container mx-auto">
-        <div className="text-xl">Order ID: #34733734834783</div>
+        <div className="text-xl">Order ID: #{data._id}</div>
 
         <table className="w-full mt-6 ">
           <thead className="font-Inter font-semibold text-lg">
@@ -40,23 +42,28 @@ export default function Confirmation() {
           </thead>
 
           <tbody>
-            <tr className="text-center">
-              <td className="py-3">3</td>
-              <td>Velocity Tweaks Premium Tweaking Application</td>
-              <td className="">
-                xOOMvi-aLfQ0b-CJva17-CCFGQ1-7oe4Hb-hNDwQ1<br></br>
-                xOOMvi-aLfQ0b-CJva17-CCFGQ1-7oe4Hb-hNDwQ1<br></br>
-                xOOMvi-aLfQ0b-CJva17-CCFGQ1-7oe4Hb-hNDwQ1
-              </td>
-              <td className="  flex justify-center items-center h-16" > <a><IoMdDownload size={30} className="hover:text-gray-400 hover:duration-150 hover:ease-in-out hover:cursor-pointer" /></a> </td>
-            </tr>
-
-            <tr className="text-center">
-              <td className="py-3">1</td>
-              <td>Velocity Tweaks Basic Tweaking Application</td>
-              <td>xOOMvi-aLfQ0b-CJva17-CCFGQ1-7oe4Hb-hNDwQ1</td>
-              <td className="  flex justify-center items-center h-16" > <a><IoMdDownload size={30} className="hover:text-gray-400 hover:duration-150 hover:ease-in-out hover:cursor-pointer" /></a> </td>
-            </tr>
+            {data.purchasedProducts.map((product, index) => (
+              <tr key={product._id} className="text-center">
+                <td className="py-3">1</td>{" "}
+                {/* Adjust quantity logic as needed */}
+                <td>{product.productName}</td>
+                <td className="">
+                  {data.licenseKeys
+                    .filter((key) => key.productName === product.productName)
+                    .map((key, i) => (
+                      <div key={i}>{key.licenseKey}</div>
+                    ))}
+                </td>
+                <td className="flex justify-center items-center h-16">
+                  <a>
+                    <IoMdDownload
+                      size={30}
+                      className="hover:text-gray-400 hover:duration-150 hover:ease-in-out hover:cursor-pointer"
+                    />
+                  </a>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
