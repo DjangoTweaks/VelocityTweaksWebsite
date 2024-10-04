@@ -1,9 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MdKey } from "react-icons/md";
 import KeysMap from "./KeysMap";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { domainName } from "../../../utils/domainName";
 
 export default function MyKeys() {
+  const [loadingState, setLoadingState] = useState(false);
+  const [keysState, setKeysState] = useState([]);
+  const [ranState, setranState] = useState(false);
+
+  useEffect(() => {
+    let ignore = false;
+    const fetchKeys = async () => {
+      setLoadingState(true);
+      const response = await axios.get(domainName + "/auth/check-auth", {
+        withCredentials: true,
+      });
+
+      if (!ignore) {
+        setKeysState(response.data.orders);
+        setLoadingState(false);
+        setranState(true);
+      }
+    };
+
+    fetchKeys();
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
+  if (loadingState) {
+    return (
+      <div className="text-white flex justify-center mt-12">
+        Loading Keys...
+      </div>
+    );
+  }
+
+  const y = 0;
+
+
+
+  const allLicenseKeyValues = keysState.flatMap((item) =>
+    item.licenseKeys.map((key) => {
+      return {
+        productName: key.productName,
+        licenseKey: key.licenseKey,
+      };
+    })
+  );
+
   const keyList = [
     {
       id: 1,
@@ -38,18 +87,17 @@ export default function MyKeys() {
             <table className="w-full">
               <thead className="border-b-[1px]  border-gray-400 h-[30px] border-opacity-50">
                 <tr className="font-Inter text-lg">
-                  <th className="font-normal pl-2">#</th>
                   <th className="font-normal">Utility</th>
                   <th className="font-normal text-center">Key</th>
                 </tr>
               </thead>
 
               <tbody className="text-center">
-                {keyList.map((keyList) => (
+                {allLicenseKeyValues.map((allLicenseKeyValues, index) => (
                   <KeysMap
-                    id={keyList.id}
-                    utilityName={keyList.name}
-                    Key={keyList.code}
+                    key={index}
+                    utilityName={allLicenseKeyValues.productName}
+                    Key={allLicenseKeyValues.licenseKey}
                   />
                 ))}
               </tbody>

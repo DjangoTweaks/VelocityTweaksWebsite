@@ -46,7 +46,7 @@ export const cartStateDB = atom({
             withCredentials: true,
           });
           if (!ignore) {
-            console.log("cartStateDB", response.data.items);
+            // console.log("cartStateDB", response.data.items);
 
             const x = response.data.items;
 
