@@ -30,6 +30,9 @@ const viewCart = async (req, res) => {
   });
   cartHTML += `</ul>`;
   cartHTML += `<form action="/checkout" method="POST"><input type="submit" value="Buy Now"></form>`;
+  cartHTML += `<form action="/checkout/choose-payment" method="GET">
+    <button type="submit">choose payment method</button>
+</form>`
 
   res.send(cartHTML);
 };
