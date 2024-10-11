@@ -10,6 +10,7 @@ const { restrictToLoggedInUserOnly } = require("./middlewares/auth");
 const cartRoutes = require('./routes/cartRoutes');
 const checkoutRoutes = require('./routes/checkoutRoutes');
 const webhookRoutes = require('./routes/webhookRoutes');
+const paypalWebhookRoutes = require('./routes/paypalWebhookRoutes');
 const downloadRoutes = require('./routes/downloadRoutes');
 const productRoutes = require('./routes/productRoutes');
 const methodRoutes = require('./routes/paymentMethod');
@@ -45,6 +46,7 @@ app.use("/open", require("./routes/openRouter"));
 app.use("/auth", require("./routes/auth"));
 app.use('/api/queries', require("./routes/queryRoutes"));
 app.use('/api/review', require("./routes/reviewRoutes"));
+app.use('/webhook', paypalWebhookRoutes);
 
 // Routes for cart, checkout, and products
 app.use('/cart', restrictToLoggedInUserOnly, cartRoutes);
@@ -67,3 +69,5 @@ connectMongoDB('mongodb+srv://Aaditya:admin@cluster0.kxn151h.mongodb.net/D2');
 app.listen(3000, () => {
   console.log("Server is running on http://localhost:3000");
 });
+
+

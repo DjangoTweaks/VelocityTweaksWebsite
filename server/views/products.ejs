@@ -27,16 +27,18 @@
   <div class="product">
     <h2>Product 1 - $10</h2>
     <form action="/cart/add-to-cart" method="POST">
-      <input type="hidden" name="productName" value="WittCepter Product 1">
+      <input type="hidden" name="productName" value="Basic Utility">
       <input type="hidden" name="priceId" value="<%= product1 %>">
+      <input type="hidden" name="price" value="10"> <!-- Added price here -->
       <input type="submit" value="Add to Cart">
     </form>
   </div>
   <div class="product">
-    <h2>Product 2 - $20</h2>
+    <h2>Product 2 - $25</h2>
     <form action="/cart/add-to-cart" method="POST">
-      <input type="hidden" name="productName" value="WittCepter Product 2">
+      <input type="hidden" name="productName" value="Premium utility">
       <input type="hidden" name="priceId" value="<%= product2 %>">
+      <input type="hidden" name="price" value="25"> <!-- Added price here -->
       <input type="submit" value="Add to Cart">
     </form>
   </div>

@@ -98,14 +98,33 @@ const handleWebhook = async (req, res) => {
         await order.save();
         console.log('Order saved:', order);
 
+
+        const downloadLinks = purchasedProducts.map(product => {
+          return {
+              productId: product.productId,
+              downloadLink: `${process.env.URL}/download/${product.productId}`, 
+          };
+      });
+      
+      // Log or send the download links as needed
+      console.log('Download Links:', downloadLinks);
+
         // Clear the cart for the user
         await Cart.findOneAndDelete({ userId: session.metadata.googleId || 'unknown_user' });
+
+          // Send success response with download links
+          return res.status(200).json({
+            success: true,
+            message: 'Webhook processed successfully',
+            downloadLinks: downloadLinks,
+        });
+
 
       } else {
         console.log('Unhandled event type:', event.type);
       }
 
-      res.sendStatus(200);
+      res.sendStatus(200)
     } catch (err) {
       console.error('Error handling webhook event:', err.message);
       res.sendStatus(400);

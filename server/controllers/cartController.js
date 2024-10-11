@@ -20,10 +20,12 @@ const viewCart = async (req, res) => {
       <li>${item.productName} - x ${item.quantity}
         <form action="/cart/cart/decrease" method="POST" style="display:inline;">
           <input type="hidden" name="productName" value="${item.productName}">
+          <input type="hidden" name="price" value="10">
           <button type="submit">-</button>
         </form>
         <form action="/cart/cart/increase" method="POST" style="display:inline;">
           <input type="hidden" name="productName" value="${item.productName}">
+          <input type="hidden" name="price" value="25">
           <button type="submit">+</button>
         </form>
       </li>`;
@@ -61,7 +63,7 @@ const viewCartFix = async (req, res) => {
 
 // Add to Cart Route
 const addToCart = async (req, res) => {
-  const { productName, priceId } = req.body;
+  const { productName, priceId, price } = req.body; // Add price to destructuring
 
   let cart = await Cart.findOne({ userId: req.user.googleId });
 
@@ -76,7 +78,7 @@ const addToCart = async (req, res) => {
   if (itemIndex > -1) {
     cart.items[itemIndex].quantity += 1;
   } else {
-    cart.items.push({ productName, priceId });
+    cart.items.push({ productName, priceId, price, quantity: 1 }); // Include price here
   }
 
   await cart.save();
