@@ -1,15 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import OrdersMap from "./OrdersMap";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { domainName } from "../../../utils/domainName";
 
 export default function UserOrderView() {
-  const orders = [
-    { orderID: 123, paymentStatus: true, orderTotal: 29.99 },
-    { orderID: 124, paymentStatus: false, orderTotal: 19.99 },
-    { orderID: 125, paymentStatus: true, orderTotal: 39.99 },
-    { orderID: 126, paymentStatus: true, orderTotal: 24.99 },
-  ];
+  const [loadingState, setLoadingState] = useState(false);
+  const [ordersState, setOrdersState] = useState([]);
+
+  useEffect(() => {
+    let ignore = false;
+    const fetchOrders = async () => {
+      setLoadingState(true);
+      const response = await axios.get(domainName + "/auth/check-auth", {
+        withCredentials: true,
+      });
+
+      if (!ignore) {
+        console.log(response.data.orders);
+        setOrdersState(response.data.orders);
+        setLoadingState(false);
+        
+      }
+    };
+  
+      fetchOrders();
+  
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
+  if (loadingState) {
+    return <div className="text-white flex justify-center mt-12">Loading Orders...</div>;
+  }
+
+
 
   return (
     <div>
@@ -26,7 +53,7 @@ export default function UserOrderView() {
       </div>
       <div className="pl-4 pt-4 font-Inter font-semibold text-xl">Orders</div>
       <div className="bg-[#292929] rounded-md drop-shadow-2xl bg-opacity-50 mx-4  mt-4 p-3">
-        {orders.length !== 0 ? (
+        {ordersState.length !== 0 ? (
           <div>
             {" "}
             <table className="w-full">
@@ -38,12 +65,12 @@ export default function UserOrderView() {
                 </tr>
               </thead>
               <tbody>
-                {orders.map((orders) => (
+                {ordersState.map((ordersState, index) => (
                   <OrdersMap
-                    key={orders.orderID}
-                    orderID={orders.orderID}
-                    paymentStatus={orders.paymentStatus}
-                    orderTotal={orders.orderTotal}
+                    key={index}
+                    orderID={ordersState._id}
+                    paymentStatus={ordersState.status}
+                    orderTotal={ordersState.amount}
                   />
                 ))}
               </tbody>
