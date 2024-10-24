@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
   userId: { type: String, required: true }, // Store the user's Google ID here
-  checkoutSessionId: { type: String, required: true },
+  checkoutSessionId: { type: String,  },
   amount: { type: Number },
   currency: { type: String },
   status: { type: String },

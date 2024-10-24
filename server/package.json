@@ -9,6 +9,7 @@
   "author": "Aaditya Dawkar",
   "license": "ISC",
   "dependencies": {
+    "@paypal/checkout-server-sdk": "^1.0.3",
     "axios": "^1.7.7",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -23,6 +24,7 @@
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
     "path": "^0.12.7",
+    "paypal-rest-sdk": "^1.8.1",
     "stripe": "^16.9.0",
     "uuid": "^10.0.0"
   }
