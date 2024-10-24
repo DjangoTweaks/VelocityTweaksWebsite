@@ -2,7 +2,6 @@ import React from "react";
 import { cartState, cartStateDB } from "../../../services/state/store";
 import { useRecoilValue } from "recoil";
 import { CurrencyConverterUSD } from "../../../utils/CurrencyConverter";
-import { domainName } from "../../../utils/domainName";
 import axios from "axios";
 
 export default function CartTotal() {
@@ -23,7 +22,7 @@ export default function CartTotal() {
   async function InitiateStripeCheckoutSession()
   {
     try {
-      const response = await axios.post(domainName + "/checkout/", {}, {
+      const response = await axios.post(import.meta.env.VITE_domainName + "/checkout/", {}, {
         withCredentials: true
       }) 
 

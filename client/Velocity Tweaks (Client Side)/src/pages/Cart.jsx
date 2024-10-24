@@ -10,7 +10,6 @@ import {
 import { cartState, cartStateDB } from "../services/state/store";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { domainName } from "../utils/domainName";
 
 export default function Cart() {
   const cartStateVal = useRecoilValue(cartState);
@@ -22,7 +21,7 @@ export default function Cart() {
       let ignore = false;
       try {
         
-        const response = await axios.get(domainName + "/cart/cart-fix", {
+        const response = await axios.get(import.meta.env.VITE_domainName + "/cart/cart-fix", {
           withCredentials: true,
         });
         if (!ignore) {

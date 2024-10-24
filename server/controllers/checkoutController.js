@@ -26,8 +26,8 @@ const processCheckout = async (req, res) => {
           payment_method_types: ['card'],
           line_items: lineItems,
           mode: 'payment',
-          success_url: `http://localhost:5173/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-          cancel_url: `http://localhost:5173/checkout/cancel`,
+          success_url: process.env.CLIENT_URL + `/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+          cancel_url: process.env.CLIENT_URL + `/checkout/cancel`,
           metadata: {
             googleId: req.user.googleId // Pass the googleId (or userId) here
         }

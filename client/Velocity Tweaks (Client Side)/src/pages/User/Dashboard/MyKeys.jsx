@@ -3,7 +3,6 @@ import { MdKey } from "react-icons/md";
 import KeysMap from "./KeysMap";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { domainName } from "../../../utils/domainName";
 
 export default function MyKeys() {
   const [loadingState, setLoadingState] = useState(false);
@@ -14,7 +13,7 @@ export default function MyKeys() {
     let ignore = false;
     const fetchKeys = async () => {
       setLoadingState(true);
-      const response = await axios.get(domainName + "/auth/check-auth", {
+      const response = await axios.get(import.meta.env.VITE_domainName + "/auth/check-auth", {
         withCredentials: true,
       });
 
