@@ -1,7 +1,6 @@
 import { atom, atomFamily, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 import axios from "axios";
-import { domainName } from "../../utils/domainName";
 const { persistAtom } = recoilPersist();
 
 export const buttonState = atom({
@@ -42,7 +41,7 @@ export const cartStateDB = atom({
 
       const fetchCartData = async () => {
         try {
-          const response = await axios.get(domainName + "/cart/cart-fix", {
+          const response = await axios.get(import.meta.env.VITE_domainName + "/cart/cart-fix", {
             withCredentials: true,
           });
           if (!ignore) {
@@ -132,7 +131,7 @@ export const authStateAtom = atom({
       let ignore = false;
       const checkAuth = async () => {
         try {
-          const response = await axios.get(domainName + "/auth/check-auth", {
+          const response = await axios.get(import.meta.env.VITE_domainName + "/auth/check-auth", {
             withCredentials: true,
           });
           if (!ignore) {
@@ -165,7 +164,7 @@ export const loggedInUserDropDownAtom = atom({
       let ignore = false;
       const getUserData = async () => {
         try {
-          const response = await axios.get(domainName + "/home/userinfo", {
+          const response = await axios.get(import.meta.env.VITE_domainName + "/home/userinfo", {
             withCredentials: true,
           });
           if (!ignore) {

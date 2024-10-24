@@ -11,7 +11,6 @@ import {
   loggedInUserDropDownAtom,
 } from "../../../services/state/store";
 import axios from "axios";
-import { domainName } from "../../../utils/domainName";
 import { CgProfile } from "react-icons/cg";
 
 export default function UserAccount() {
@@ -43,7 +42,7 @@ export default function UserAccount() {
 //   const loggedInUserDropDownInfo = useRecoilValue(loggedInUserDropDownAtom);
 
 //   async function LogoutHandler() {
-//     const result = await axios.get(domainName + "/auth/logout", {
+//     const result = await axios.get(import.meta.env.VITE_domainName + "/auth/logout", {
 //       withCredentials: true,
 //     });
 //   }
@@ -148,7 +147,7 @@ function UserLoggedIn() {
   });
 
   async function LogoutHandler() {
-    window.location.href = domainName + "/auth/logout";
+    window.location.href = import.meta.env.VITE_domainName + "/auth/logout";
   }
 
   return (

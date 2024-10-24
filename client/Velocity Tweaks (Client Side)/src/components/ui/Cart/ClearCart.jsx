@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
-import { domainName } from "../../../utils/domainName";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { cartStateDB } from "../../../services/state/store";
@@ -16,7 +15,7 @@ export default function ClearCart() {
     const fetchCartData = async () => {
       try {
         
-        const response = await axios.get(domainName + "/cart/cart-fix", {
+        const response = await axios.get(import.meta.env.VITE_domainName + "/cart/cart-fix", {
           withCredentials: true,
         });
 
@@ -48,7 +47,7 @@ export default function ClearCart() {
 
   async function clearCartClick()
   { 
-    const response = await axios.post(domainName + "/cart/cart/clear", {}, {
+    const response = await axios.post(import.meta.env.VITE_domainName + "/cart/cart/clear", {}, {
       withCredentials: true
     });
     fetchCartData();
