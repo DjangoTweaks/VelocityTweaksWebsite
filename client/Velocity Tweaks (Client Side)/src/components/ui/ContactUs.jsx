@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
-import { domainName } from "../../utils/domainName";
 import { Bounce, toast } from "react-toastify";
 import { useRecoilState } from "recoil";
 import { contactFormState } from "../../services/state/store";
@@ -62,7 +61,7 @@ export default function ContactUs() {
         const toastAsync = toast.loading("Submitting...", toastProperties);
         await new Promise((resolve) => setTimeout(resolve, 2000));
         axios
-          .post(domainName + "/api/queries", {
+          .post(import.meta.env.VITE_domainName + "/api/queries", {
             name: data.firstName,
             email: data.email,
             message: data.query,

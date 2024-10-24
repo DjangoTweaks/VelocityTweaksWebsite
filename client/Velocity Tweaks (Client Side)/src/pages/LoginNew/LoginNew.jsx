@@ -5,12 +5,11 @@ import { RecoilRoot } from "recoil";
 import FadeInUpwardsText from "../../components/ui/FadeInUpwardsText";
 import { Checkbox } from "flowbite-react";
 import { Link } from "react-router-dom";
-import {domainName} from "../../utils/domainName";
 export default function LoginNew() {
 
   function handleSignup()
   {
-    window.location.href =  domainName + "/auth/google/login"; 
+    window.location.href =  import.meta.env.VITE_domainName + "/auth/google/login"; 
   }
 
 

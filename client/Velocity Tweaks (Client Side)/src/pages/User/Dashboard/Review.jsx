@@ -14,7 +14,6 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
-import { domainName } from "../../../utils/domainName";
 import { Bounce, toast } from "react-toastify";
 
 const labels = {
@@ -64,7 +63,7 @@ export default function Review() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(domainName + "/home/userinfo", {
+      const result = await axios.get(import.meta.env.VITE_domainName + "/home/userinfo", {
         withCredentials: true,
       });
       console.log(result);
@@ -118,7 +117,7 @@ function ReviewComponent({ preloadedValues }) {
     const toastAsync = toast.loading("Submitting...", toastProperties);
     await new Promise((resolve) => setTimeout(resolve, 2000));
     axios
-      .post(domainName + "/api/review", {
+      .post(import.meta.env.VITE_domainName + "/api/review", {
         name: data.name,
         email: data.email,
         message: data.review,
