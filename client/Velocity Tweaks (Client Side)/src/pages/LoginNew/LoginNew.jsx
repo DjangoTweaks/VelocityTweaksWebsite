@@ -9,7 +9,8 @@ export default function LoginNew() {
 
   function handleSignup()
   {
-    window.location.href =  import.meta.env.VITE_domainName + "/auth/google/login"; 
+    // window.location.href =  import.meta.env.VITE_domainName + "/auth/google/login"; 
+    window.location.href =  "https://velocitytweakswebsite-1.onrender.com/auth/google/login";
   }
 
 
