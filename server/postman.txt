@@ -19,3 +19,10 @@ router.get('/check-auth', (req, res) => {
     res.status(401).send({ authenticated: false });
   }
 });
+
+
+app.use(session({
+  secret: "Aaditya@3737",
+  resave: false,
+  saveUninitialized: false,
+}));
