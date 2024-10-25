@@ -26,3 +26,16 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
 }));
+
+
+
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'Aaditya@3737',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: true, // Use secure cookies in production
+    httpOnly: true, // Prevent client-side access to the cookie
+    sameSite: 'None', // Required for cross-origin requests
+  }
+}));

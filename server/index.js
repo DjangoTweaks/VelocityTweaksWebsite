@@ -23,6 +23,7 @@ app.use(cors({
 }));
 
 // Cookie and session middlewares
+app.use(cookieParser());
 app.use(session({
   secret: process.env.SESSION_SECRET || 'Aaditya@3737',
   resave: false,
