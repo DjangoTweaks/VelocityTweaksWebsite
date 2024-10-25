@@ -25,9 +25,14 @@ app.use(cors({
 // Cookie and session middlewares
 app.use(cookieParser());
 app.use(session({
-  secret: "Aaditya@3737",
+  secret: process.env.SESSION_SECRET || 'Aaditya@3737',
   resave: false,
   saveUninitialized: false,
+  cookie: {
+    secure: true, // Use secure cookies in production
+    httpOnly: true, // Prevent client-side access to the cookie
+    sameSite: 'None', // Required for cross-origin requests
+  }
 }));
 
 // Passport initialization
