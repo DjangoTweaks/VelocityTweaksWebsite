@@ -131,7 +131,7 @@ export const authStateAtom = atom({
       let ignore = false;
       const checkAuth = async () => {
         try {
-          const response = await axios.get(import.meta.env.VITE_domainName + "/auth/check-auth", {
+          const response = await axios.get("https://velocitytweakswebsite-1.onrender.com/auth/check-auth", {
             withCredentials: true,
           });
           if (!ignore) {
@@ -164,7 +164,7 @@ export const loggedInUserDropDownAtom = atom({
       let ignore = false;
       const getUserData = async () => {
         try {
-          const response = await axios.get(import.meta.env.VITE_domainName + "/home/userinfo", {
+          const response = await axios.get("https://velocitytweakswebsite-1.onrender.com/home/userinfo", {
             withCredentials: true,
           });
           if (!ignore) {
