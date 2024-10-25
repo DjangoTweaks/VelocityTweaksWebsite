@@ -19,6 +19,7 @@ app.use(cors({
   origin: 'https://velocity-tweaks-website-tau.vercel.app', 
   methods: ['GET', 'POST', 'PUT', 'DELETE'], 
   credentials: true, 
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Cookie and session middlewares
