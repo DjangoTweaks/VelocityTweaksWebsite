@@ -5,6 +5,7 @@ const Order = require('../model/order'); // Make sure the path is correct for th
 // Controller to handle authentication check and retrieve user orders
 exports.checkAuth = async (req, res) => {
   try {
+    console.log(req);
     if (req.isAuthenticated() && req.user && req.user.googleId) {
       // The user is authenticated and has a googleId in the session
       const userGoogleId = req.user.googleId;
@@ -19,6 +20,7 @@ exports.checkAuth = async (req, res) => {
         orders: userOrders, // Send the user's orders to the frontend
       });
     } else {
+      
       // The user is not authenticated or googleId is missing
       res.status(401).send({
         authenticated: false,

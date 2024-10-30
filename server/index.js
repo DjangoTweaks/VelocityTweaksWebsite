@@ -4,6 +4,7 @@ const app = express();
 const cors = require('cors');
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const passport = require("./config/passport");
 const { restrictToLoggedInUserOnly } = require("./middlewares/auth");
 
@@ -24,10 +25,14 @@ app.use(cors({
 
 // Cookie and session middlewares
 app.use(cookieParser());
+
+const mongoURI = 'mongodb+srv://Aaditya:admin@cluster0.kxn151h.mongodb.net/googleauth';
+
 app.use(session({
   secret: process.env.SESSION_SECRET || 'Aaditya@3737',
   resave: false,
   saveUninitialized: false,
+  store: MongoStore.create({ mongoUrl: mongoURI }), // Set up MongoStore
   cookie: {
     secure: true, // Use secure cookies in production
     httpOnly: true, // Prevent client-side access to the cookie
@@ -70,7 +75,7 @@ app.set("views", path.resolve("./views"));
 
 // MongoDB connection
 const { connectMongoDB } = require('./connect');
-connectMongoDB('mongodb+srv://Aaditya:admin@cluster0.kxn151h.mongodb.net/D2');
+connectMongoDB(mongoURI);
 
 // Start the server
 app.listen(3000, () => {
