@@ -14,7 +14,7 @@ router.get(
   "/google/callback/login",
   passport.authenticate("google-login", { failureRedirect: "/user/signup",  failureMessage: "Email not found, please signup." }),
   (req, res) => {
-    res.redirect('https://velocity-tweaks-website-tau.vercel.app');
+    res.redirect('http://localhost:3000/home');
   }
 );
 
@@ -29,7 +29,7 @@ router.get("/logout", (req, res, next) => {
       return next(err);
     }
     res.clearCookie("uid"); // Clear the JWT cookie
-    res.redirect('https://velocity-tweaks-website-tau.vercel.app');
+    res.redirect('http://localhost:3000/open');
   });
 });
 

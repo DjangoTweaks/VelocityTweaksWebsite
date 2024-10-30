@@ -11,7 +11,7 @@ passport.use('google-login',
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://velocitytweakswebsite-1.onrender.com/auth/google/callback/login"
+      callbackURL: "https://velocitytweakswebsite-1.onrender.com//auth/google/callback/login"
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
