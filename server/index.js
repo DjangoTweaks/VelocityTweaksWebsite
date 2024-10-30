@@ -16,29 +16,26 @@ const downloadRoutes = require('./routes/downloadRoutes');
 const productRoutes = require('./routes/productRoutes');
 const methodRoutes = require('./routes/paymentMethod');
 // CORS Configuration
-app.use(cors({
-  origin: 'https://velocity-tweaks-website-tau.vercel.app', 
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
-  credentials: true, 
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+//app.use(cors({
+  //origin: 'https://velocity-tweaks-website-tau.vercel.app', 
+  //methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+  //credentials: true, 
+  //allowedHeaders: ['Content-Type', 'Authorization']
+//}));
 
 // Cookie and session middlewares
 app.use(cookieParser());
 
 const mongoURI = 'mongodb+srv://Aaditya:admin@cluster0.kxn151h.mongodb.net/googleauth';
 
-app.use(session({
-  secret: process.env.SESSION_SECRET || 'Aaditya@3737',
-  resave: false,
-  saveUninitialized: false,
-  store: MongoStore.create({ mongoUrl: mongoURI }), // Set up MongoStore
-  cookie: {
-    secure: true, // Use secure cookies in production
-    httpOnly: true, // Prevent client-side access to the cookie
-    sameSite: 'None', // Required for cross-origin requests
-  }
-}));
+app.use(
+  session({
+    secret: "Aaditya@3737",
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: mongoURI }), // Set up MongoStore
+  })
+);
 
 // Passport initialization
 app.use(passport.initialize());
